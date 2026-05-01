@@ -22,6 +22,39 @@
   <link rel="apple-touch-icon" href="imags/z.jpg" />
 
   <style>
+   
+
+
+header {
+  position: relative;
+  overflow: hidden;
+  background: #071726;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+#hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 23, 38, 0.90);
+  z-index: 1;
+  pointer-events: none;
+}
+
+header > *:not(#hero-video):not(.hero-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
     :root {
       --black: #071726;
       --navy: #01080f;
@@ -108,17 +141,21 @@
     }
 
     .lang-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid #2a3f55;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
+    position: absolute;
+    top: 20px;
+    right: 20px;   /* 👈 esto lo pega a la derecha */
+    z-index: 10;
+
+   transform: none; /* 👈 IMPORTANTE: elimina cualquier centrado */
+
+   background: rgba(1, 8, 15, 0.55);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 10px;
+    border-radius: 6px;
+   font-size: 0.85rem;
+   cursor: pointer;
+  }
 
     .lang-btn:hover {
       color: #ffffff;
@@ -276,13 +313,14 @@
       z-index: 999;
     }
 
-    @media (min-width: 600px) {
-      .services,
-      .pillars,
-      .impact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+    @media (max-width: 600px) {
+  .lang-btn {
+    top: 12px;
+    right: 12px;
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
+}
 
     @media (min-width: 900px) {
       header {
@@ -306,14 +344,22 @@
 </head>
 
 <body>
-
+  <button id="langToggle" class="lang-btn" onclick="toggleLang()">🇬🇧 EN</button>
+  
   <!-- HERO -->
   <header>
-    <button id="langToggle" class="lang-btn" onclick="toggleLang()">🇬🇧 EN</button>
 
-    <div class="logo">
-      <img src="imags/logoZOI.png" alt="ZOI logo" />
-    </div>
+ <video autoplay muted loop playsinline id="hero-video">
+    <source src="header.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  
+
+  <div class="logo">
+    <img src="imags/logoZOI.png" alt="ZOI logo" />
+  </div>
 
 
 

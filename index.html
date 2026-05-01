@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ZOI — Innovación y Fabricación Digital</title>
+  <title>ZOI — Desarrollo Humano Tecnológico</title>
   
-   <!-- Google Analytics -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RF82QZJM9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,7 +15,7 @@
     gtag('config', 'G-5RF82QZJM9');
   </script>
 
-  <meta name="description" content="ZOI desarrolla soluciones en fabricación digital, automatización y educación tecnológica para empresas e instituciones." />
+  <meta name="description" content="ZOI es una empresa social que impulsa el desarrollo humano tecnológico mediante fabricación digital, automatización, educación tecnológica y sistemas reales de producción." />
 
   <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="imags/z.jpg" />
@@ -23,11 +23,11 @@
 
   <style>
     :root {
-      --black: #000000;
+      --black: #071726;
       --navy: #0B1C2D;
       --navy-soft: #102a44;
-      --accent: #F4C430;
-      --text: #FFFFFF;
+      --accent: #aacef3;
+      --text: #d4d4d4;
       --muted: #cfd8e3;
       --whatsapp: #25D366;
     }
@@ -45,7 +45,6 @@
       line-height: 1.6;
     }
 
-    /* ================= HEADER ================= */
     header {
       position: relative;
       background: linear-gradient(135deg, var(--black), var(--navy));
@@ -64,15 +63,30 @@
     }
 
     header h1 {
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      margin-bottom: 16px;
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    header h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      margin-bottom: 20px;
+      color: var(--accent);
+      font-weight: 700;
     }
 
     header p {
       font-size: clamp(1.05rem, 3.5vw, 1.25rem);
-      max-width: 760px;
-      margin: 0 auto 36px;
+      max-width: 820px;
+      margin: 0 auto 24px;
       opacity: 0.95;
+    }
+
+    .hero-quote {
+      font-size: clamp(1.25rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: var(--accent);
+      max-width: 900px;
+      margin: 26px auto 36px;
     }
 
     .cta {
@@ -81,13 +95,18 @@
       color: #000000;
       padding: 14px 26px;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       margin: 8px;
       min-width: 160px;
     }
 
-    /* BOTÓN IDIOMA */
+    .cta.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
     .lang-btn {
       position: absolute;
       top: 20px;
@@ -106,7 +125,6 @@
       border-color: var(--accent);
     }
 
-    /* ================= SECTIONS ================= */
     section {
       padding: 70px 20px;
       max-width: 1100px;
@@ -115,7 +133,7 @@
 
     .section-title {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 42px;
     }
 
     .section-title h2 {
@@ -125,16 +143,34 @@
 
     .section-title p {
       color: var(--muted);
+      max-width: 760px;
+      margin: auto;
     }
 
-    /* ================= SERVICES ================= */
-    .services {
+    .intro-text {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 900px;
+      margin: 0 auto 22px;
+      text-align: center;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .services,
+    .pillars,
+    .impact-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 28px;
     }
 
-    .service {
+    .service,
+    .pillar,
+    .impact-card {
       background: var(--navy);
       color: var(--muted);
       padding: 32px;
@@ -142,13 +178,14 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     }
 
-    .service h3 {
+    .service h3,
+    .pillar h3,
+    .impact-card h3 {
       margin-bottom: 14px;
       color: #ffffff;
       font-size: 1.25rem;
     }
 
-    /* ================= VALUE ================= */
     .value {
       background: var(--navy-soft);
       color: var(--muted);
@@ -164,7 +201,23 @@
       font-size: clamp(1.6rem, 5vw, 2rem);
     }
 
-    /* ================= SECTORS ================= */
+    .value p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 1.08rem;
+    }
+
+    .quote-box {
+      margin-top: 34px;
+      padding: 30px;
+      border: 1px solid rgba(244,196,48,0.45);
+      border-radius: 14px;
+      color: var(--accent);
+      font-size: clamp(1.25rem, 4vw, 1.7rem);
+      font-weight: 800;
+      background: rgba(244,196,48,0.06);
+    }
+
     .sectors {
       display: flex;
       flex-wrap: wrap;
@@ -181,16 +234,16 @@
       white-space: nowrap;
     }
 
-    /* ================= CONTACT ================= */
     .contact {
       text-align: center;
     }
 
     .contact p {
       color: var(--muted);
+      max-width: 760px;
+      margin: auto;
     }
 
-    /* ================= FOOTER ================= */
     footer {
       background: var(--black);
       color: var(--muted);
@@ -205,7 +258,6 @@
       text-decoration: none;
     }
 
-    /* ================= WHATSAPP BUTTON ================= */
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
@@ -224,9 +276,10 @@
       z-index: 999;
     }
 
-    /* ================= RESPONSIVE ================= */
     @media (min-width: 600px) {
-      .services {
+      .services,
+      .pillars,
+      .impact-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -237,6 +290,11 @@
       }
 
       .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .pillars,
+      .impact-grid {
         grid-template-columns: repeat(3, 1fr);
       }
 
@@ -257,15 +315,23 @@
       <img src="imags/logoZOI.png" alt="ZOI logo" />
     </div>
 
-    <h2 data-es="Desarollo Humano Tecnológico"
+
+
+    <h2 data-es="Desarrollo Humano Tecnológico"
         data-en="Technological Human Development">
-      Desarollo Humano Tecnológico
+      Desarrollo Humano Tecnológico
     </h2>
 
-    <p data-es="Tecnología aplicada para empresas, instituciones y proyectos de impacto."
-       data-en="Applied technology for companies, institutions, and impact-driven projects.">
-      Tecnología aplicada para empresas, instituciones y proyectos de impacto.
+    <p data-es="Somos una empresa social que impulsa el desarrollo humano a través de la tecnología, conectando capacidades humanas con sistemas reales de producción."
+       data-en="We are a social enterprise driving human development through technology, connecting human capabilities with real production systems.">
+      Somos una empresa social que impulsa el desarrollo humano a través de la tecnología, conectando capacidades humanas con sistemas reales de producción.
     </p>
+
+    <div class="hero-quote"
+         data-es="Si existe, lo conseguimos. Si no existe, lo creamos."
+         data-en="If it exists, we source it. If it doesn’t, we create it.">
+      Si existe, lo conseguimos. Si no existe, lo creamos.
+    </div>
 
     <a href="#contacto" class="cta"
        data-es="Contáctanos"
@@ -273,20 +339,96 @@
       Contáctanos
     </a>
 
-    <a href="#servicios" class="cta"
+    <a href="#servicios" class="cta secondary"
        data-es="Servicios"
        data-en="Services">
       Servicios
     </a>
   </header>
 
+  <!-- QUÉ ES ZOI -->
+  <section id="que-es-zoi">
+    <div class="section-title">
+      <h2 data-es="Qué es ZOI" data-en="What is ZOI">
+        Qué es ZOI
+      </h2>
+      <p data-es="Una empresa social enfocada en desarrollo humano tecnológico."
+         data-en="A social enterprise focused on technological human development.">
+        Una empresa social enfocada en desarrollo humano tecnológico.
+      </p>
+    </div>
+
+    <p class="intro-text"
+       data-es="ZOI impulsa el desarrollo humano a través de la tecnología, reduciendo la brecha entre el avance tecnológico y la capacidad de las personas, empresas e instituciones para adaptarse, producir y crear valor."
+       data-en="ZOI drives human development through technology, reducing the gap between technological progress and the ability of people, companies, and institutions to adapt, produce, and create value.">
+      ZOI impulsa el desarrollo humano a través de la tecnología, reduciendo la brecha entre el avance tecnológico y la capacidad de las personas, empresas e instituciones para adaptarse, producir y crear valor.
+    </p>
+
+    <p class="intro-text"
+       data-es="No solo desarrollamos tecnología: la convertimos en capacidades, la activamos en sistemas productivos y la transformamos en oportunidades económicas reales."
+       data-en="We don’t just develop technology: we turn it into capabilities, activate it in production systems, and transform it into real economic opportunities.">
+      No solo desarrollamos tecnología: la convertimos en capacidades, la activamos en sistemas productivos y la transformamos en oportunidades económicas reales.
+    </p>
+  </section>
+
+  <!-- MODELO -->
+  <section id="modelo">
+    <div class="section-title">
+      <h2 data-es="Un modelo que conecta impacto con ejecución"
+          data-en="A model connecting impact with execution">
+        Un modelo que conecta impacto con ejecución
+      </h2>
+      <p data-es="Tecnología, capacidades humanas y producción real trabajando como un solo sistema."
+         data-en="Technology, human capabilities, and real production working as one system.">
+        Tecnología, capacidades humanas y producción real trabajando como un solo sistema.
+      </p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3 data-es="Comprensión del cambio"
+            data-en="Understanding change">
+          Comprensión del cambio
+        </h3>
+        <p data-es="Investigamos cómo la tecnología transforma el trabajo, identificando riesgos de desplazamiento laboral y nuevas oportunidades emergentes."
+           data-en="We study how technology transforms work, identifying labor displacement risks and emerging opportunities.">
+          Investigamos cómo la tecnología transforma el trabajo, identificando riesgos de desplazamiento laboral y nuevas oportunidades emergentes.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3 data-es="Desarrollo de capacidades"
+            data-en="Capability development">
+          Desarrollo de capacidades
+        </h3>
+        <p data-es="Formamos personas y equipos en herramientas de fabricación digital, automatización y tecnologías productivas."
+           data-en="We train people and teams in digital fabrication, automation, and productive technologies.">
+          Formamos personas y equipos en herramientas de fabricación digital, automatización y tecnologías productivas.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3 data-es="Producción real"
+            data-en="Real production">
+          Producción real
+        </h3>
+        <p data-es="Conectamos capacidades con proyectos reales, generando valor económico, experiencia práctica e ingresos."
+           data-en="We connect capabilities with real projects, generating economic value, practical experience, and income.">
+          Conectamos capacidades con proyectos reales, generando valor económico, experiencia práctica e ingresos.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICIOS -->
   <section id="servicios">
     <div class="section-title">
-      <h2 data-es="Qué hacemos" data-en="What we do">Qué hacemos</h2>
-      <p data-es="Soluciones técnicas reales, del diseño a la ejecución."
-         data-en="Real technical solutions, from design to execution.">
-        Soluciones técnicas reales, del diseño a la ejecución.
+      <h2 data-es="Qué hacemos" data-en="What we do">
+        Qué hacemos
+      </h2>
+      <p data-es="Soluciones reales que integran tecnología, personas y producción."
+         data-en="Real solutions integrating technology, people, and production.">
+        Soluciones reales que integran tecnología, personas y producción.
       </p>
     </div>
 
@@ -295,9 +437,9 @@
         <h3 data-es="Fabricación digital" data-en="Digital fabrication">
           Fabricación digital
         </h3>
-        <p data-es="Prototipado, producción y soluciones personalizadas mediante impresión 3D, CNC, corte láser y procesos híbridos."
-           data-en="Prototyping, production, and custom solutions using 3D printing, CNC, laser cutting, and hybrid processes.">
-          Prototipado, producción y soluciones personalizadas mediante impresión 3D, CNC, corte láser y procesos híbridos.
+        <p data-es="Prototipado, producción y soluciones personalizadas mediante impresión 3D, CNC, corte láser, robótica y procesos híbridos."
+           data-en="Prototyping, production, and custom solutions using 3D printing, CNC, laser cutting, robotics, and hybrid processes.">
+          Prototipado, producción y soluciones personalizadas mediante impresión 3D, CNC, corte láser, robótica y procesos híbridos.
         </p>
       </div>
 
@@ -305,9 +447,9 @@
         <h3 data-es="Automatización" data-en="Automation">
           Automatización
         </h3>
-        <p data-es="Diseño e implementación de sistemas automatizados integrando hardware, software y flujos digitales."
-           data-en="Design and implementation of automated systems integrating hardware, software, and digital workflows.">
-          Diseño e implementación de sistemas automatizados integrando hardware, software y flujos digitales.
+        <p data-es="Diseño e implementación de sistemas automatizados integrando hardware, software, flujos digitales y operación productiva."
+           data-en="Design and implementation of automated systems integrating hardware, software, digital workflows, and productive operation.">
+          Diseño e implementación de sistemas automatizados integrando hardware, software, flujos digitales y operación productiva.
         </p>
       </div>
 
@@ -315,41 +457,175 @@
         <h3 data-es="Educación y laboratorios" data-en="Education and labs">
           Educación y laboratorios
         </h3>
-        <p data-es="Diseño, implementación y operación de FabLabs, programas educativos y transferencia tecnológica."
-           data-en="Design, implementation, and operation of FabLabs, educational programs, and technology transfer.">
-          Diseño, implementación y operación de FabLabs, programas educativos y transferencia tecnológica.
+        <p data-es="Diseño, implementación y operación de Fab Labs, programas educativos, transferencia tecnológica y formación para el trabajo del futuro."
+           data-en="Design, implementation, and operation of Fab Labs, educational programs, technology transfer, and training for the future of work.">
+          Diseño, implementación y operación de Fab Labs, programas educativos, transferencia tecnológica y formación para el trabajo del futuro.
         </p>
       </div>
     </div>
   </section>
 
   <!-- PROPUESTA DE VALOR -->
-  <section>
+  <section id="como-trabajamos">
     <div class="value">
       <h2 data-es="Cómo trabajamos" data-en="How we work">
         Cómo trabajamos
       </h2>
-      <p data-es="En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción."
-         data-en="At ZOI we don’t just design ideas: we build them, test them, and take them to production.">
-        En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción.
+
+      <p data-es="En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción, asegurando que la tecnología genere impacto real en las personas y en los sistemas productivos."
+         data-en="At ZOI we don’t just design ideas: we build them, test them, and bring them to production, ensuring technology creates real impact on people and production systems.">
+        En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción, asegurando que la tecnología genere impacto real en las personas y en los sistemas productivos.
+      </p>
+
+      <div class="quote-box"
+           data-es="Si existe, lo conseguimos. Si no existe, lo creamos."
+           data-en="If it exists, we source it. If it doesn’t, we create it.">
+        Si existe, lo conseguimos. Si no existe, lo creamos.
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDAD OPERATIVA -->
+  <section id="capacidad">
+    <div class="section-title">
+      <h2 data-es="Capacidad operativa real"
+          data-en="Real operational capacity">
+        Capacidad operativa real
+      </h2>
+      <p data-es="ZOI es una infraestructura activa de desarrollo, producción e integración tecnológica."
+         data-en="ZOI is an active infrastructure for development, production, and technological integration.">
+        ZOI no es solo discurso. Es una infraestructura activa de desarrollo, producción e integración tecnológica.
+      </p>
+    </div>
+
+    <p class="intro-text"
+       data-es="Si una solución existe, la encontramos, la integramos y la entregamos. Si no existe, la diseñamos, desarrollamos y producimos."
+       data-en="If a solution exists, we find it, integrate it, and deliver it. If it doesn’t exist, we design it, develop it, and produce it.">
+      Si una solución existe, la encontramos, la integramos y la entregamos. Si no existe, la diseñamos, desarrollamos y producimos.
+    </p>
+
+    <div class="sectors">
+      <div class="sector" data-es="Instituciones" data-en="Institutions">
+        Instituciones
+      </div>
+      <div class="sector" data-es="Empresas" data-en="Companies">
+        Empresas
+      </div>
+      <div class="sector" data-es="Emprendimientos" data-en="Startups">
+        Emprendimientos
+      </div>
+      <div class="sector" data-es="Educación" data-en="Education">
+        Educación
+      </div>
+      <div class="sector" data-es="Fabricación personalizada" data-en="Custom fabrication">
+        Fabricación personalizada
+      </div>
+      <div class="sector" data-es="Automatización productiva" data-en="Productive automation">
+        Automatización productiva
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACTO -->
+  <section id="impacto">
+    <div class="section-title">
+      <h2 data-es="Impacto" data-en="Impact">
+        Impacto
+      </h2>
+      <p data-es="Medimos lo que importa: capacidades, transición laboral y oportunidades reales."
+         data-en="We measure what matters: capabilities, workforce transition, and real opportunities.">
+        Medimos lo que importa: capacidades, transición laboral y oportunidades reales.
+      </p>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3 data-es="Acceso a tecnología"
+            data-en="Access to technology">
+          Acceso a tecnología
+        </h3>
+        <p data-es="Acercamos herramientas avanzadas de fabricación digital, automatización y diseño a personas, instituciones y comunidades."
+           data-en="We bring advanced tools for digital fabrication, automation, and design closer to people, institutions, and communities.">
+          Acercamos herramientas avanzadas de fabricación digital, automatización y diseño a personas, instituciones y comunidades.
+        </p>
+      </div>
+
+      <div class="impact-card">
+        <h3 data-es="Reconversión laboral"
+            data-en="Workforce transformation">
+          Reconversión laboral
+        </h3>
+        <p data-es="Impulsamos nuevas capacidades para que las personas puedan adaptarse a los cambios tecnológicos y participar en trabajos emergentes."
+           data-en="We promote new capabilities so people can adapt to technological change and participate in emerging work opportunities.">
+          Impulsamos nuevas capacidades para que las personas puedan adaptarse a los cambios tecnológicos y participar en trabajos emergentes.
+        </p>
+      </div>
+
+      <div class="impact-card">
+        <h3 data-es="Oportunidades productivas"
+            data-en="Productive opportunities">
+          Oportunidades productivas
+        </h3>
+        <p data-es="Conectamos formación, tecnología y producción para generar valor económico, experiencia práctica e ingresos reales."
+           data-en="We connect training, technology, and production to generate economic value, practical experience, and real income.">
+          Conectamos formación, tecnología y producción para generar valor económico, experiencia práctica e ingresos reales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIÓN -->
+  <section id="vision">
+    <div class="value">
+      <h2 data-es="Nuestra visión" data-en="Our vision">
+        Nuestra visión
+      </h2>
+
+      <p data-es="Construir una infraestructura donde cualquier persona, empresa o institución pueda acceder a tecnología, desarrollar capacidades productivas y generar valor dentro de la economía del futuro."
+         data-en="To build an infrastructure where any person, company, or institution can access technology, develop productive capabilities, and create value within the economy of the future.">
+        Construir una infraestructura donde cualquier persona, empresa o institución pueda acceder a tecnología, desarrollar capacidades productivas y generar valor dentro de la economía del futuro.
+      </p>
+
+      <br />
+
+      <p data-es="Creemos que el desarrollo tecnológico solo tiene sentido si se traduce en desarrollo humano."
+         data-en="We believe technological development only makes sense when it becomes human development.">
+        Creemos que el desarrollo tecnológico solo tiene sentido si se traduce en desarrollo humano.
       </p>
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="contact">
-    <h2 data-es="¿Hablamos?" data-en="Shall we talk?">¿Hablamos?</h2>
-    <p data-es="Si tienes un proyecto o una idea que necesita ejecución técnica, conversemos."
-       data-en="If you have a project or idea that needs technical execution, let’s talk.">
-      Si tienes un proyecto o una idea que necesita ejecución técnica, conversemos.
+    <h2 data-es="¿Hablamos?" data-en="Shall we talk?">
+      ¿Hablamos?
+    </h2>
+
+    <p data-es="Si tienes un proyecto, una necesidad técnica, una institución que requiere tecnología o una idea que necesita hacerse realidad, conversemos."
+       data-en="If you have a project, a technical need, an institution that requires technology, or an idea that needs to become real, let’s talk.">
+      Si tienes un proyecto, una necesidad técnica, una institución que requiere tecnología o una idea que necesita hacerse realidad, conversemos.
     </p>
+
+    <a href="https://wa.me/593985301752?text=Hola%20ZOI,%20quiero%20hablar%20con%20el%20Agente%2024/7."
+    class="cta"
+    target="_blank"
+     data-es="Agente 24/7"
+    data-en="24/7 Agent">
+    Agente 24/7
+    </a>
+
     <br />
+
     <p>📧 <strong>info@zoi.ec</strong></p>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>© 2026 ZOI — Quito, Ecuador</p>
+    <p data-es="Desarrollo Humano Tecnológico"
+       data-en="Technological Human Development">
+      Desarrollo Humano Tecnológico
+    </p>
   </footer>
 
   <!-- WHATSAPP -->
@@ -373,6 +649,8 @@
 
       document.getElementById("langToggle").textContent =
         currentLang === "es" ? "🇬🇧 EN" : "🇪🇸 ES";
+
+      document.documentElement.lang = currentLang;
     }
   </script>
 

@@ -95,11 +95,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
       height: auto;
     }
 
-    header h1 {
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin-bottom: 10px;
-    }
-
+    header h1,
     header h2 {
       font-size: clamp(1.4rem, 4vw, 2rem);
       margin-bottom: 20px;
@@ -163,9 +159,61 @@ header > *:not(#hero-video):not(.hero-overlay) {
     }
 
     section {
+      position: relative;
       padding: 70px 20px;
       max-width: 1100px;
       margin: auto;
+    }
+
+    .image-section {
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: var(--black);
+      background-position: center;
+      background-size: cover;
+      min-height: 640px;
+      z-index: 0;
+    }
+
+    .image-section::before,
+    .image-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .image-section::before {
+      background-image: var(--section-image);
+      background-position: var(--section-position, center);
+      background-size: cover;
+      opacity: 0.72;
+    }
+
+    .image-section::after {
+      background:
+        linear-gradient(180deg, rgba(7, 23, 38, 0.60), rgba(1, 8, 15, 0.76)),
+        linear-gradient(90deg, rgba(1, 8, 15, 0.34), rgba(1, 8, 15, 0.08) 46%, rgba(1, 8, 15, 0.42)),
+        radial-gradient(circle at 50% 18%, rgba(165, 153, 19, 0.12), transparent 44%);
+    }
+
+    .image-section .section-title,
+    .image-section .services,
+    .image-section .impact-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-section {
+      --section-image: url("imags/prod.jpg");
+      --section-position: center 44%;
+    }
+
+    .impact-section {
+      --section-image: url("imags/impacto-joven-web.jpg");
+      --section-position: center 42%;
     }
 
     .section-title {
@@ -215,12 +263,31 @@ header > *:not(#hero-video):not(.hero-overlay) {
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     }
 
+    .image-section .service,
+    .image-section .impact-card {
+      background: linear-gradient(180deg, rgba(1, 8, 15, 0.62), rgba(1, 8, 15, 0.48));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.38);
+      backdrop-filter: blur(1px);
+    }
+
     .service h3,
     .pillar h3,
     .impact-card h3 {
       margin-bottom: 14px;
       color: #ffffff;
       font-size: 1.25rem;
+    }
+
+    .image-section .service h3,
+    .image-section .impact-card h3 {
+      text-shadow: 0 2px 14px rgba(0,0,0,0.65);
+    }
+
+    .image-section .service p,
+    .image-section .impact-card p {
+      color: #dfe7ef;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.55);
     }
 
     .value {
@@ -320,7 +387,44 @@ header > *:not(#hero-video):not(.hero-overlay) {
     font-size: 0.75rem;
     padding: 5px 8px;
   }
+
+  .image-section {
+    min-height: auto;
+  }
+
+  .image-section::before {
+    opacity: 0.62;
+  }
+
+  .image-section .service,
+  .image-section .impact-card {
+    padding: 24px;
+  }
 }
+
+    @media (min-width: 700px) {
+      .image-section .services,
+      .image-section .impact-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .image-section .service,
+      .image-section .impact-card {
+        padding: 22px;
+      }
+
+      .image-section .service h3,
+      .image-section .impact-card h3 {
+        font-size: 1.05rem;
+      }
+
+      .image-section .service p,
+      .image-section .impact-card p {
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+    }
 
     @media (min-width: 900px) {
       header {
@@ -338,6 +442,31 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
       section {
         padding: 90px 20px;
+      }
+
+      .image-section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+
+      .image-section .section-title {
+        margin-bottom: 180px;
+      }
+
+      .image-section .section-title h2 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+      }
+
+      .image-section .services,
+      .image-section .impact-grid {
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .image-section .service,
+      .image-section .impact-card {
+        padding: 24px;
+        min-height: 210px;
       }
     }
   </style>
@@ -363,10 +492,10 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
 
 
-    <h2 data-es="Desarrollo Humano Tecnológico"
+    <h1 data-es="Desarrollo Humano Tecnológico"
         data-en="Technological Human Development">
       Desarrollo Humano Tecnológico
-    </h2>
+    </h1>
 
     <p data-es="Somos una empresa social que impulsa el desarrollo humano a través de la tecnología, conectando capacidades humanas con sistemas reales de producción."
        data-en="We are a social enterprise driving human development through technology, connecting human capabilities with real production systems.">
@@ -467,7 +596,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
   </section>
 
   <!-- SERVICIOS -->
-  <section id="servicios">
+  <section id="servicios" class="image-section services-section">
     <div class="section-title">
       <h2 data-es="Qué hacemos" data-en="What we do">
         Qué hacemos
@@ -573,7 +702,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
   </section>
 
   <!-- IMPACTO -->
-  <section id="impacto">
+  <section id="impacto" class="image-section impact-section">
     <div class="section-title">
       <h2 data-es="Impacto" data-en="Impact">
         Impacto
@@ -655,6 +784,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
     <a href="https://wa.me/593985301752?text=Hola%20ZOI,%20quiero%20hablar%20con%20el%20Agente%2024/7."
     class="cta"
     target="_blank"
+    rel="noopener noreferrer"
      data-es="Agente 24/7"
     data-en="24/7 Agent">
     Agente 24/7
@@ -678,6 +808,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
   <a class="whatsapp-btn"
      href="https://wa.me/593985301752?text=Hola%20ZOI,%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto."
      target="_blank"
+     rel="noopener noreferrer"
      aria-label="WhatsApp ZOI">
     💬
   </a>

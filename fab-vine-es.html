@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fab Vine — Resumen del proyecto</title>
+  <meta name="description" content="Resumen en español de Fab Vine, un proyecto open source de la comunidad Fab Lab." />
+  <link rel="icon" type="image/png" href="imags/z-favicon.png" />
+  <link rel="apple-touch-icon" href="imags/z-favicon.png" />
+  <style>
+    :root {
+      --black: #071726;
+      --navy: #01080f;
+      --navy-soft: #102a44;
+      --accent: #a59913;
+      --text: #d4d4d4;
+      --muted: #cfd8e3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #071726 0%, #06111d 46%, #01080f 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      min-height: 72vh;
+      display: grid;
+      align-items: end;
+      padding: 90px 20px 70px;
+      background:
+        linear-gradient(180deg, rgba(7,23,38,0.35), rgba(1,8,15,0.92)),
+        url("imags/Fab_Vine.png") center/cover;
+    }
+
+    .wrap {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+
+    .logo {
+      width: min(178px, 58vw);
+      margin-bottom: 36px;
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+    }
+
+    h1 {
+      max-width: 760px;
+      color: #ffffff;
+      font-size: clamp(2.2rem, 8vw, 4.7rem);
+      line-height: 1.02;
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      max-width: 800px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 3vw, 1.32rem);
+    }
+
+    main {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    section {
+      margin-bottom: 54px;
+    }
+
+    h2 {
+      color: #ffffff;
+      font-size: clamp(1.45rem, 4vw, 2rem);
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .meta span {
+      border: 1px solid rgba(165,153,19,0.36);
+      border-radius: 999px;
+      color: #f0e68a;
+      background: rgba(165,153,19,0.14);
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(16,42,68,0.92), rgba(1,8,15,0.95));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 26px;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.34);
+    }
+
+    .card h3 {
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+    }
+
+    .media {
+      display: grid;
+      gap: 20px;
+    }
+
+    .media img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(1,8,15,0.72);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.34);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      color: #01080f;
+      background: linear-gradient(135deg, var(--accent), #f0e68a);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .btn.secondary {
+      color: #ffffff;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--navy);
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: 64vh;
+      }
+    }
+
+    @media print {
+      body {
+        background: #071726;
+      }
+
+      header {
+        min-height: auto;
+        padding: 40px 28px;
+      }
+
+      .logo {
+        width: 132px;
+        margin-bottom: 22px;
+        box-shadow: none;
+      }
+
+      main {
+        width: auto;
+        padding: 34px 28px;
+      }
+
+      section {
+        break-inside: avoid;
+        margin-bottom: 30px;
+      }
+
+      .actions {
+        display: none;
+      }
+
+      footer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <img class="logo" src="imags/fab_vine_white_bg.png" alt="Fab Vine" />
+      <h1>Fab Vine</h1>
+      <p class="lead">Una instalación interactiva que transforma la actividad colectiva de la red Fab Lab en un sistema vivo de luz.</p>
+      <div class="meta">
+        <span>Año: 2026</span>
+        <span>Evento: Fab26</span>
+        <span>Instalación: MIT</span>
+        <span>Open source</span>
+        <span>Comunidad: Fab Lab Network</span>
+        <span>Con Fabio López, Sherry Lassiter, Neil Gershenfeld, Roberto Gallo, ZOI y colaboradores</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Resumen</h2>
+      <p>Fab Vine es un proyecto open source de la comunidad Fab Lab. No pertenece a ZOI ni a ninguna organización o persona en particular. La instalación está diseñada para Fab26 en MIT y busca conectar la energía humana, digital y territorial de la comunidad mediante una estructura inspirada en un árbol, compuesta por puntos de luz direccionables que reaccionan como parte de un sistema colectivo.</p>
+      <p>El sistema utiliza módulos de sensado llamados Fab Leaf Nodes, distribuidos en distintos espacios para capturar actividad local como sonido y movimiento. Estas señales se integran con interacciones digitales provenientes del sitio web del evento y redes sociales.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Cómo funciona</h3>
+        <p>Los datos viajan por una red dedicada hacia un motor central tipo enjambre. Este motor procesa la información y la traduce en comportamientos lumínicos dinámicos dentro de una estructura de LEDs direccionables individualmente.</p>
+      </div>
+      <div class="card">
+        <h3>Propósito</h3>
+        <p>Fab Vine busca hacer visible la vida colectiva de la red Fab Lab: sus encuentros, conversaciones, movimiento, colaboración y presencia digital, convirtiéndolos en una experiencia abierta, compartida y replicable.</p>
+      </div>
+      <div class="card">
+        <h3>Escalabilidad</h3>
+        <p>Los nodos pueden operar de forma independiente o como parte de la red. Después del evento, los participantes podrán llevarlos a sus laboratorios para que el sistema continúe evolucionando globalmente.</p>
+      </div>
+      <div class="card">
+        <h3>Colaboración abierta</h3>
+        <p>Fab Vine se desarrolla con participación de Fabio López, Sherry Lassiter, Neil Gershenfeld, Roberto Gallo, ZOI y otros colaboradores de la comunidad. Como iniciativa open source, contempla un reconocimiento a todos los colaboradores que participen en el evento, visibilizando su aporte dentro de la experiencia y su continuidad global.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Visuales del proyecto</h2>
+      <div class="media">
+        <img src="imags/Fab_Vine.png" alt="Visual de la instalación Fab Vine" />
+        <img src="imags/Fab_Vine.gif" alt="Animación de comportamiento lumínico de Fab Vine" />
+      </div>
+      <div class="actions">
+        <a class="btn" href="fab-vine-resumen-es.pdf" download>Descargar PDF</a>
+        <a class="btn" href="https://chat.whatsapp.com/JXpyfYOvsjI0bUxR8aowZv" target="_blank" rel="noopener noreferrer">Únete</a>
+        <a class="btn secondary" href="fab-vine-en.html">English version</a>
+        <a class="btn secondary" href="proyectos.html">Volver a proyectos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 ZOI — Desarrollo Humano Tecnológico</p>
+  </footer>
+</body>
+</html>

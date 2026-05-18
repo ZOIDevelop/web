@@ -345,6 +345,37 @@
       outline: none;
     }
 
+    .project-resume-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .project-resume-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(255,255,255,0.05);
+      font-weight: 650;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .project-resume-links a:hover,
+    .project-resume-links a:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(165,153,19,0.62);
+      background: rgba(165,153,19,0.13);
+      outline: none;
+    }
+
     .project-link {
       display: inline-block;
       margin-top: 20px;
@@ -521,24 +552,31 @@
           <h3 data-es="Fab Vine" data-en="Fab Vine">
             Fab Vine
           </h3>
-          <p data-es="Fab Vine convierte la actividad colectiva de la red Fab Lab en un sistema vivo de luz. A través de módulos de sensado llamados Fab Leaf Nodes, la instalación captura sonido, movimiento e interacciones digitales del evento para transformarlas en comportamiento lumínico."
-             data-en="Fab Vine turns the collective activity of the Fab Lab network into a living system of light. Through sensing modules called Fab Leaf Nodes, the installation captures sound, movement, and digital interactions from the event and transforms them into light behavior.">
-            Fab Vine convierte la actividad colectiva de la red Fab Lab en un sistema vivo de luz. A través de módulos de sensado llamados Fab Leaf Nodes, la instalación captura sonido, movimiento e interacciones digitales del evento para transformarlas en comportamiento lumínico.
+          <p data-es="Fab Vine es un proyecto open source de la comunidad Fab Lab: no pertenece a ZOI ni a ninguna organización o persona en particular. La instalación convierte la actividad colectiva de la red en un sistema vivo de luz."
+             data-en="Fab Vine is an open-source project from the Fab Lab community: it does not belong to ZOI or to any single organization or person. The installation turns the network's collective activity into a living system of light.">
+            Fab Vine es un proyecto open source de la comunidad Fab Lab: no pertenece a ZOI ni a ninguna organización o persona en particular. La instalación convierte la actividad colectiva de la red en un sistema vivo de luz.
           </p>
-          <p data-es="La información viaja por una red dedicada hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente. Cada punto de luz actúa como parte de un sistema colectivo."
-             data-en="The information travels through a dedicated network to a central swarm engine, coordinating a tree-inspired structure of individually addressable LEDs. Each light point acts as part of a collective system.">
-            La información viaja por una red dedicada hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente. Cada punto de luz actúa como parte de un sistema colectivo.
+          <p data-es="A través de módulos de sensado llamados Fab Leaf Nodes, el sistema captura sonido, movimiento e interacciones digitales del evento. La información viaja hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente."
+             data-en="Through sensing modules called Fab Leaf Nodes, the system captures sound, movement, and digital interactions from the event. The information travels to a central swarm engine, coordinating a tree-inspired structure of individually addressable LEDs.">
+            A través de módulos de sensado llamados Fab Leaf Nodes, el sistema captura sonido, movimiento e interacciones digitales del evento. La información viaja hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente.
           </p>
-          <p data-es="Diseñado para 2026, el sistema es modular, resiliente y escalable: sus nodos pueden operar de forma independiente o conectarse a la red global después del evento, continuando su evolución en distintos laboratorios."
-             data-en="Designed for 2026, the system is modular, resilient, and scalable: its nodes can operate independently or connect to the global network after the event, continuing its evolution across different labs.">
-            Diseñado para 2026, el sistema es modular, resiliente y escalable: sus nodos pueden operar de forma independiente o conectarse a la red global después del evento, continuando su evolución en distintos laboratorios.
+          <p data-es="La instalación se desarrollará para Fab26 en MIT con participación de Fabio López, Sherry Lassiter, Neil Gershenfeld, Roberto Gallo, ZOI y otros colaboradores de la comunidad. Su diseño es modular, resiliente y escalable para que los nodos puedan continuar evolucionando en distintos laboratorios después del evento."
+             data-en="The installation will be developed for Fab26 at MIT with participation from Fabio López, Sherry Lassiter, Neil Gershenfeld, Roberto Gallo, ZOI, and other community collaborators. Its design is modular, resilient, and scalable so the nodes can continue evolving across different labs after the event.">
+            La instalación se desarrollará para Fab26 en MIT con participación de Fabio López, Sherry Lassiter, Neil Gershenfeld, Roberto Gallo, ZOI y otros colaboradores de la comunidad. Su diseño es modular, resiliente y escalable para que los nodos puedan continuar evolucionando en distintos laboratorios después del evento.
+          </p>
+          <p data-es="Como iniciativa abierta, Fab Vine reconocerá a todos los colaboradores que participen en el evento, dejando visible su aporte dentro de la experiencia y la continuidad global del proyecto."
+             data-en="As an open initiative, Fab Vine will recognize all collaborators who participate in the event, making their contribution visible within the experience and the project's global continuity.">
+            Como iniciativa abierta, Fab Vine reconocerá a todos los colaboradores que participen en el evento, dejando visible su aporte dentro de la experiencia y la continuidad global del proyecto.
           </p>
           <div class="project-meta">
             <span data-es="Año: 2026" data-en="Year: 2026">Año: 2026</span>
-            <span data-es="Área: instalación interactiva" data-en="Area: interactive installation">Área: instalación interactiva</span>
+            <span data-es="Evento: Fab26" data-en="Event: Fab26">Evento: Fab26</span>
+            <span data-es="Instalación: MIT" data-en="Installation: MIT">Instalación: MIT</span>
+            <span data-es="Licencia: open source" data-en="License: open source">Licencia: open source</span>
+            <span data-es="Comunidad: Fab Lab Network" data-en="Community: Fab Lab Network">Comunidad: Fab Lab Network</span>
             <span data-es="Sistema: Fab Leaf Nodes" data-en="System: Fab Leaf Nodes">Sistema: Fab Leaf Nodes</span>
             <span data-es="Tecnología: red y LEDs direccionables" data-en="Technology: network and addressable LEDs">Tecnología: red y LEDs direccionables</span>
-            <span data-es="Aliado: MIT - CBA" data-en="Partner: MIT - CBA">Aliado: MIT - CBA</span>
+            <span data-es="Participación: ZOI y colaboradores" data-en="Participation: ZOI and collaborators">Participación: ZOI y colaboradores</span>
           </div>
           <a class="project-join"
              href="https://chat.whatsapp.com/JXpyfYOvsjI0bUxR8aowZv"
@@ -548,6 +586,20 @@
              data-en="Join">
             Únete
           </a>
+          <div class="project-resume-links" aria-label="Fab Vine summary links">
+            <a href="fab-vine-es.html" data-es="Resumen en español" data-en="Spanish summary">
+              Resumen en español
+            </a>
+            <a href="fab-vine-en.html" data-es="Resumen en inglés" data-en="English summary">
+              Resumen en inglés
+            </a>
+            <a href="fab-vine-resumen-es.pdf" data-es="PDF español" data-en="Spanish PDF">
+              PDF español
+            </a>
+            <a href="fab-vine-summary-en.pdf" data-es="PDF inglés" data-en="English PDF">
+              PDF inglés
+            </a>
+          </div>
         </div>
 
         <img class="project-image cover" src="imags/Fab_Vine.png" alt="Fab Vine installation" loading="lazy">

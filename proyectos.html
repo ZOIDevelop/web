@@ -321,6 +321,30 @@
       padding: 7px 10px;
     }
 
+    .project-join {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 24px;
+      min-width: 220px;
+      min-height: 54px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #f0e68a);
+      color: #01080f;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 18px 34px rgba(165,153,19,0.24);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .project-join:hover,
+    .project-join:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px rgba(165,153,19,0.32);
+      outline: none;
+    }
+
     .project-link {
       display: inline-block;
       margin-top: 20px;
@@ -516,6 +540,14 @@
             <span data-es="Tecnología: red y LEDs direccionables" data-en="Technology: network and addressable LEDs">Tecnología: red y LEDs direccionables</span>
             <span data-es="Aliado: MIT - CBA" data-en="Partner: MIT - CBA">Aliado: MIT - CBA</span>
           </div>
+          <a class="project-join"
+             href="https://chat.whatsapp.com/JXpyfYOvsjI0bUxR8aowZv"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-es="Únete"
+             data-en="Join">
+            Únete
+          </a>
         </div>
 
         <img class="project-image cover" src="imags/Fab_Vine.png" alt="Fab Vine installation" loading="lazy">

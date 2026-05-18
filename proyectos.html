@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Proyectos destacados — ZOI</title>
+  <meta name="description" content="Proyectos destacados de ZOI en fabricación digital, automatización, educación tecnológica y reconversión laboral." />
+
+  <link rel="icon" type="image/png" href="imags/z-favicon.png" />
+  <link rel="apple-touch-icon" href="imags/z-favicon.png" />
+
+  <style>
+    :root {
+      --black: #071726;
+      --navy: #01080f;
+      --navy-soft: #102a44;
+      --accent: #a59913;
+      --text: #d4d4d4;
+      --muted: #cfd8e3;
+      --whatsapp: #25D366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    }
+
+    body {
+      background:
+        linear-gradient(180deg, #071726 0%, #06111d 42%, #071726 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .lang-btn {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      right: max(14px, env(safe-area-inset-right));
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 68px;
+      min-height: 40px;
+      background: rgba(1, 8, 15, 0.62);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.20);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.24);
+      backdrop-filter: blur(10px);
+    }
+
+    .flag-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.18);
+      flex: 0 0 auto;
+      overflow: hidden;
+      position: relative;
+      opacity: 0.82;
+    }
+
+    .flag-icon::before,
+    .flag-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .flag-icon.gb {
+      background:
+        linear-gradient(90deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(0deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(90deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        linear-gradient(0deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        #012169;
+    }
+
+    .flag-icon.gb::before {
+      background:
+        linear-gradient(32deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(-32deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%);
+    }
+
+    .flag-icon.gb::after {
+      background:
+        linear-gradient(32deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        linear-gradient(-32deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%);
+    }
+
+    .flag-icon.es {
+      background: linear-gradient(180deg, #aa151b 0 25%, #f1bf00 25% 75%, #aa151b 75% 100%);
+    }
+
+    .flag-icon.es::before {
+      inset: 9px auto auto 7px;
+      width: 5px;
+      height: 9px;
+      border-radius: 1px;
+      background: #8f1d1d;
+      box-shadow: 5px 0 0 #f6d04d;
+    }
+
+    .lang-code {
+      line-height: 1;
+    }
+
+    .lang-btn:hover,
+    .lang-btn:focus-visible {
+      background: rgba(1, 8, 15, 0.78);
+      border-color: rgba(165,153,19,0.58);
+      outline: none;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      min-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 20px 80px;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(7,23,38,0.82), rgba(1,8,15,0.92)),
+        url("imags/prod.jpg") center/cover;
+    }
+
+    .logo {
+      margin-bottom: 26px;
+    }
+
+    .logo img {
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    header p {
+      max-width: 780px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #000000;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-decoration: none;
+      margin: 8px;
+      min-width: 160px;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.36);
+      outline: none;
+    }
+
+    .cta.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    section {
+      max-width: 1120px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    section + section {
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      color: #ffffff;
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      max-width: 760px;
+      margin: auto;
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(16,42,68,0.96), rgba(1,8,15,0.95));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.48);
+    }
+
+    .project-card h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 28px;
+      align-items: center;
+      justify-items: center;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(165,153,19,0.14), transparent 32%),
+        linear-gradient(135deg, rgba(16,42,68,0.98), rgba(1,8,15,0.96) 64%);
+    }
+
+    .project-card.featured .project-copy {
+      max-width: 860px;
+      text-align: center;
+    }
+
+    .project-card.featured h3 {
+      font-size: clamp(1.55rem, 4vw, 2.1rem);
+    }
+
+    .project-kicker {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: #f0e68a;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-media {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      background: rgba(1,8,15,0.72);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.32);
+      max-width: 920px;
+      justify-self: center;
+      width: 100%;
+    }
+
+    .project-media video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #01080f;
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      max-width: 880px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.32);
+    }
+
+    .project-image.cover {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      background: rgba(1,8,15,0.72);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-meta span {
+      background: rgba(165,153,19,0.14);
+      border: 1px solid rgba(165,153,19,0.36);
+      border-radius: 999px;
+      color: #f0e68a;
+      font-size: 0.82rem;
+      padding: 7px 10px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(165,153,19,0.55);
+    }
+
+    .project-link:hover,
+    .project-link:focus-visible {
+      color: #ffffff;
+      border-color: #ffffff;
+      outline: none;
+    }
+
+    .value {
+      background: var(--navy-soft);
+      color: var(--muted);
+      padding: 46px 28px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .value h2 {
+      color: #ffffff;
+      margin-bottom: 16px;
+      font-size: clamp(1.6rem, 5vw, 2rem);
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--muted);
+      padding: 34px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: max(18px, env(safe-area-inset-bottom));
+      right: max(18px, env(safe-area-inset-right));
+      background: var(--whatsapp);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+      z-index: 999;
+      border: 2px solid rgba(255,255,255,0.88);
+    }
+
+    .whatsapp-btn:hover,
+    .whatsapp-btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .chat-icon {
+      position: relative;
+      width: 27px;
+      height: 21px;
+      border-radius: 13px;
+      background: #ffffff;
+      display: block;
+    }
+
+    .chat-icon::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      bottom: -4px;
+      width: 9px;
+      height: 9px;
+      background: #ffffff;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        min-height: 72vh;
+        padding-top: 88px;
+      }
+
+      .lang-btn {
+        min-width: 64px;
+        min-height: 38px;
+        font-size: 0.76rem;
+        gap: 6px;
+        padding: 7px 9px;
+      }
+
+      .flag-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .whatsapp-btn {
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    @media (min-width: 820px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .project-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      .project-media {
+        max-width: 880px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="langToggle" class="lang-btn" onclick="toggleLang()" aria-label="Change language">
+    <span class="flag-icon gb" aria-hidden="true"></span>
+    <span class="lang-code">EN</span>
+  </button>
+
+  <header>
+    <div>
+      <div class="logo">
+        <img src="imags/logoZOI.png" alt="ZOI logo" />
+      </div>
+
+      <h1 data-es="Proyectos destacados" data-en="Featured projects">
+        Proyectos destacados
+      </h1>
+      <p data-es="Una primera mirada a las líneas de trabajo que ZOI puede activar con instituciones, empresas, comunidades y equipos educativos."
+         data-en="A first look at the work lines ZOI can activate with institutions, companies, communities, and educational teams.">
+        Una primera mirada a las líneas de trabajo que ZOI puede activar con instituciones, empresas, comunidades y equipos educativos.
+      </p>
+
+      <a href="index.html" class="cta"
+         data-es="Volver al inicio"
+         data-en="Back home">
+        Volver al inicio
+      </a>
+      <a href="#contacto" class="cta secondary"
+         data-es="Conversar un proyecto"
+         data-en="Discuss a project">
+        Conversar un proyecto
+      </a>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-title">
+      <h2 data-es="Casos de Éxito y líneas de trabajo" data-en="Success stories and work lines">
+        Casos de Éxito y líneas de trabajo
+      </h2>
+      <p data-es="Una selección de proyectos reales y líneas activables donde tecnología, comunidad e implementación se convierten en resultados concretos."
+         data-en="A selection of real projects and active work lines where technology, community, and implementation become concrete outcomes.">
+        Una selección de proyectos reales y líneas activables donde tecnología, comunidad e implementación se convierten en resultados concretos.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card featured">
+        <div class="project-copy">
+          <span class="project-kicker" data-es="Proyecto destacado" data-en="Featured project">
+            Proyecto destacado
+          </span>
+          <h3 data-es="Fab Vine" data-en="Fab Vine">
+            Fab Vine
+          </h3>
+          <p data-es="Fab Vine convierte la actividad colectiva de la red Fab Lab en un sistema vivo de luz. A través de módulos de sensado llamados Fab Leaf Nodes, la instalación captura sonido, movimiento e interacciones digitales del evento para transformarlas en comportamiento lumínico."
+             data-en="Fab Vine turns the collective activity of the Fab Lab network into a living system of light. Through sensing modules called Fab Leaf Nodes, the installation captures sound, movement, and digital interactions from the event and transforms them into light behavior.">
+            Fab Vine convierte la actividad colectiva de la red Fab Lab en un sistema vivo de luz. A través de módulos de sensado llamados Fab Leaf Nodes, la instalación captura sonido, movimiento e interacciones digitales del evento para transformarlas en comportamiento lumínico.
+          </p>
+          <p data-es="La información viaja por una red dedicada hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente. Cada punto de luz actúa como parte de un sistema colectivo."
+             data-en="The information travels through a dedicated network to a central swarm engine, coordinating a tree-inspired structure of individually addressable LEDs. Each light point acts as part of a collective system.">
+            La información viaja por una red dedicada hacia un motor central tipo enjambre, que coordina una estructura inspirada en un árbol con LEDs direccionables individualmente. Cada punto de luz actúa como parte de un sistema colectivo.
+          </p>
+          <p data-es="Diseñado para 2026, el sistema es modular, resiliente y escalable: sus nodos pueden operar de forma independiente o conectarse a la red global después del evento, continuando su evolución en distintos laboratorios."
+             data-en="Designed for 2026, the system is modular, resilient, and scalable: its nodes can operate independently or connect to the global network after the event, continuing its evolution across different labs.">
+            Diseñado para 2026, el sistema es modular, resiliente y escalable: sus nodos pueden operar de forma independiente o conectarse a la red global después del evento, continuando su evolución en distintos laboratorios.
+          </p>
+          <div class="project-meta">
+            <span data-es="Año: 2026" data-en="Year: 2026">Año: 2026</span>
+            <span data-es="Área: instalación interactiva" data-en="Area: interactive installation">Área: instalación interactiva</span>
+            <span data-es="Sistema: Fab Leaf Nodes" data-en="System: Fab Leaf Nodes">Sistema: Fab Leaf Nodes</span>
+            <span data-es="Tecnología: red y LEDs direccionables" data-en="Technology: network and addressable LEDs">Tecnología: red y LEDs direccionables</span>
+            <span data-es="Aliado: MIT - CBA" data-en="Partner: MIT - CBA">Aliado: MIT - CBA</span>
+          </div>
+        </div>
+
+        <img class="project-image cover" src="imags/Fab_Vine.png" alt="Fab Vine installation" loading="lazy">
+
+        <img class="project-image cover" src="imags/Fab_Vine.gif" alt="Fab Vine light behavior animation" loading="lazy">
+      </article>
+
+      <article class="project-card featured">
+        <div class="project-copy">
+          <span class="project-kicker" data-es="Proyecto destacado" data-en="Featured project">
+            Proyecto destacado
+          </span>
+          <h3 data-es="Aliyaku, Agua Segura" data-en="Aliyaku, Safe Water">
+            Aliyaku, Agua Segura
+          </h3>
+          <p data-es="En 2022, junto con SLB, ZOI impulsó el Reto Comunidad Sostenible para acompañar soluciones con potencial de impacto territorial. El proyecto ganador fue apoyado en el desarrollo e implementación de un filtro de agua para comunidades rurales."
+             data-en="In 2022, together with SLB, ZOI promoted the Sustainable Community Challenge to support solutions with territorial impact potential. The winning project was supported in the development and implementation of a water filter for rural communities.">
+            En 2022, junto con SLB, ZOI impulsó el Reto Comunidad Sostenible para acompañar soluciones con potencial de impacto territorial. El proyecto ganador fue apoyado en el desarrollo e implementación de un filtro de agua para comunidades rurales.
+          </p>
+          <p data-es="La solución no requiere energía para su funcionamiento, facilitando el acceso a agua segura en zonas amazónicas y rurales donde la infraestructura convencional no siempre llega."
+             data-en="The solution does not require energy to operate, enabling access to safe water in Amazonian and rural areas where conventional infrastructure does not always reach.">
+            La solución no requiere energía para su funcionamiento, facilitando el acceso a agua segura en zonas amazónicas y rurales donde la infraestructura convencional no siempre llega.
+          </p>
+          <div class="project-meta">
+            <span data-es="Año: 2022" data-en="Year: 2022">Año: 2022</span>
+            <span data-es="Aliado: Comunidad amazónica" data-en="Partner: Amazonian community">Aliado: Comunidad amazónica</span>
+            <span data-es="Reto: Comunidad Sostenible" data-en="Challenge: Sustainable Community">Reto: Comunidad Sostenible</span>
+            <span data-es="Resultado: filtro sin energía" data-en="Outcome: energy-free filter">Resultado: filtro sin energía</span>
+            <span data-es="Impacto: agua segura rural" data-en="Impact: rural safe water">Impacto: agua segura rural</span>
+          </div>
+        </div>
+
+        <div class="project-media" aria-label="Video Aliyaku, Agua Segura">
+          <video controls preload="metadata" poster="imags/aliyaku-poster.jpg" playsinline>
+            <source src="videos/aliyaku-agua-segura.mp4" type="video/mp4">
+          </video>
+        </div>
+      </article>
+
+      <article class="project-card featured">
+        <div class="project-copy">
+          <span class="project-kicker" data-es="Proyecto destacado" data-en="Featured project">
+            Proyecto destacado
+          </span>
+          <h3 data-es="#Hackingcovid19ec" data-en="#Hackingcovid19ec">
+            #Hackingcovid19ec
+          </h3>
+          <p data-es="En 2020, #Hackingcovid19ec activó una respuesta de innovación abierta durante la emergencia sanitaria. La iniciativa conectó talento técnico, fabricación digital y acción ciudadana para desarrollar soluciones útiles en un momento crítico."
+             data-en="In 2020, #Hackingcovid19ec activated an open innovation response during the health emergency. The initiative connected technical talent, digital fabrication, and civic action to develop useful solutions in a critical moment.">
+            En 2020, #Hackingcovid19ec activó una respuesta de innovación abierta durante la emergencia sanitaria. La iniciativa conectó talento técnico, fabricación digital y acción ciudadana para desarrollar soluciones útiles en un momento crítico.
+          </p>
+          <p data-es="El proyecto demostró cómo una comunidad distribuida puede organizarse rápidamente, prototipar, comunicar y apoyar necesidades reales cuando la tecnología se pone al servicio de las personas."
+             data-en="The project showed how a distributed community can organize quickly, prototype, communicate, and support real needs when technology is placed at the service of people.">
+            El proyecto demostró cómo una comunidad distribuida puede organizarse rápidamente, prototipar, comunicar y apoyar necesidades reales cuando la tecnología se pone al servicio de las personas.
+          </p>
+          <div class="project-meta">
+            <span data-es="Año: 2020" data-en="Year: 2020">Año: 2020</span>
+            <span data-es="Área: Innovación abierta" data-en="Area: Open innovation">Área: Innovación abierta</span>
+            <span data-es="Resultado: respuesta colaborativa" data-en="Outcome: collaborative response">Resultado: respuesta colaborativa</span>
+            <span data-es="Contexto: COVID-19" data-en="Context: COVID-19">Contexto: COVID-19</span>
+          </div>
+          <a class="project-link"
+             href="https://www.facebook.com/hackingcovid19ec/"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-es="Más información"
+             data-en="More information">
+            Más información
+          </a>
+        </div>
+
+        <div class="project-media" aria-label="Video AEI #Hackingcovid19ec">
+          <video controls preload="metadata" playsinline>
+            <source src="videos/hackingcovid19ec-aei.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <img class="project-image" src="imags/ganamos_aei.jpg" alt="Ganamos AEI" loading="lazy">
+
+        <div class="project-media" aria-label="Video #Hackingcovid19ec">
+          <video controls preload="metadata" playsinline>
+            <source src="videos/hackingcovid19ec.mp4" type="video/mp4">
+          </video>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3 data-es="Fabricación digital aplicada" data-en="Applied digital fabrication">
+          Fabricación digital aplicada
+        </h3>
+        <p data-es="Diseño, prototipado y producción de soluciones físicas mediante impresión 3D, CNC, corte láser y procesos híbridos."
+           data-en="Design, prototyping, and production of physical solutions through 3D printing, CNC, laser cutting, and hybrid processes.">
+          Diseño, prototipado y producción de soluciones físicas mediante impresión 3D, CNC, corte láser y procesos híbridos.
+        </p>
+        <div class="project-meta">
+          <span data-es="Área: Producción" data-en="Area: Production">Área: Producción</span>
+          <span data-es="Resultado: prototipo o serie corta" data-en="Outcome: prototype or short run">Resultado: prototipo o serie corta</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3 data-es="Automatización productiva" data-en="Productive automation">
+          Automatización productiva
+        </h3>
+        <p data-es="Integración de hardware, software y flujos digitales para reducir fricción operativa y mejorar procesos."
+           data-en="Integration of hardware, software, and digital workflows to reduce operational friction and improve processes.">
+          Integración de hardware, software y flujos digitales para reducir fricción operativa y mejorar procesos.
+        </p>
+        <div class="project-meta">
+          <span data-es="Área: Automatización" data-en="Area: Automation">Área: Automatización</span>
+          <span data-es="Resultado: sistema funcional" data-en="Outcome: working system">Resultado: sistema funcional</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3 data-es="Laboratorios y educación tecnológica" data-en="Technology labs and education">
+          Laboratorios y educación tecnológica
+        </h3>
+        <p data-es="Diseño e implementación de programas, espacios y experiencias de aprendizaje tecnológico aplicado."
+           data-en="Design and implementation of programs, spaces, and applied technology learning experiences.">
+          Diseño e implementación de programas, espacios y experiencias de aprendizaje tecnológico aplicado.
+        </p>
+        <div class="project-meta">
+          <span data-es="Área: Educación" data-en="Area: Education">Área: Educación</span>
+          <span data-es="Resultado: laboratorio o programa" data-en="Outcome: lab or program">Resultado: laboratorio o programa</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3 data-es="Capacitación para reconversión laboral" data-en="Training for workforce transition">
+          Capacitación para reconversión laboral
+        </h3>
+        <p data-es="Formación práctica para que personas y equipos adopten nuevas herramientas productivas y participen en trabajos emergentes."
+           data-en="Practical training so people and teams can adopt new productive tools and participate in emerging work.">
+          Formación práctica para que personas y equipos adopten nuevas herramientas productivas y participen en trabajos emergentes.
+        </p>
+        <div class="project-meta">
+          <span data-es="Área: Capacidades" data-en="Area: Capabilities">Área: Capacidades</span>
+          <span data-es="Resultado: habilidades aplicables" data-en="Outcome: applicable skills">Resultado: habilidades aplicables</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="value">
+      <h2 data-es="Construyamos el próximo caso" data-en="Let’s build the next case">
+        Construyamos el próximo caso
+      </h2>
+      <p data-es="Si tienes una necesidad productiva, educativa o institucional, podemos convertirla en un proyecto concreto."
+         data-en="If you have a productive, educational, or institutional need, we can turn it into a concrete project.">
+        Si tienes una necesidad productiva, educativa o institucional, podemos convertirla en un proyecto concreto.
+      </p>
+      <a href="https://wa.me/593985301752?text=Hola%20ZOI,%20quiero%20hablar%20sobre%20un%20proyecto%20destacado."
+         class="cta"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-es="Hablar con ZOI"
+         data-en="Talk to ZOI">
+        Hablar con ZOI
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 ZOI — Quito, Ecuador</p>
+    <p data-es="Desarrollo Humano Tecnológico" data-en="Technological Human Development">
+      Desarrollo Humano Tecnológico
+    </p>
+  </footer>
+
+  <a class="whatsapp-btn"
+     href="https://wa.me/593985301752?text=Hola%20ZOI,%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="WhatsApp ZOI">
+    <span class="chat-icon" aria-hidden="true"></span>
+  </a>
+
+  <script>
+    let currentLang = "es";
+
+    function toggleLang() {
+      currentLang = currentLang === "es" ? "en" : "es";
+
+      document.querySelectorAll("[data-es]").forEach(el => {
+        el.textContent = el.dataset[currentLang];
+      });
+
+      const flagIcon = document.querySelector("#langToggle .flag-icon");
+      flagIcon.className = currentLang === "es" ? "flag-icon gb" : "flag-icon es";
+
+      document.querySelector("#langToggle .lang-code").textContent =
+        currentLang === "es" ? "EN" : "ES";
+
+      document.documentElement.lang = currentLang;
+    }
+  </script>
+</body>
+</html>

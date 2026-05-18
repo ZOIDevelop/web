@@ -18,8 +18,8 @@
   <meta name="description" content="ZOI es una empresa social que impulsa el desarrollo humano tecnológico mediante fabricación digital, automatización, educación tecnológica y sistemas reales de producción." />
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/jpeg" href="imags/z.jpg" />
-  <link rel="apple-touch-icon" href="imags/z.jpg" />
+  <link rel="icon" type="image/png" href="imags/z-favicon.png" />
+  <link rel="apple-touch-icon" href="imags/z-favicon.png" />
 
   <style>
    
@@ -73,7 +73,8 @@ header > *:not(#hero-video):not(.hero-overlay) {
     }
 
     body {
-      background: var(--black);
+      background:
+        linear-gradient(180deg, #071726 0%, #06111d 42%, #071726 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -128,6 +129,23 @@ header > *:not(#hero-video):not(.hero-overlay) {
       text-decoration: none;
       margin: 8px;
       min-width: 160px;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.36);
+      outline: none;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
     }
 
     .cta.secondary {
@@ -137,25 +155,94 @@ header > *:not(#hero-video):not(.hero-overlay) {
     }
 
     .lang-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;   /* 👈 esto lo pega a la derecha */
-    z-index: 10;
-
-   transform: none; /* 👈 IMPORTANTE: elimina cualquier centrado */
-
-   background: rgba(1, 8, 15, 0.55);
-    color: var(--muted);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 6px 10px;
-    border-radius: 6px;
-   font-size: 0.85rem;
-   cursor: pointer;
-  }
-
-    .lang-btn:hover {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      right: max(14px, env(safe-area-inset-right));
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 68px;
+      min-height: 40px;
+      background: rgba(1, 8, 15, 0.62);
       color: #ffffff;
-      border-color: var(--accent);
+      border: 1px solid rgba(255,255,255,0.20);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.24);
+      backdrop-filter: blur(10px);
+    }
+
+    .flag-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.18);
+      flex: 0 0 auto;
+      overflow: hidden;
+      position: relative;
+      opacity: 0.82;
+    }
+
+    .flag-icon::before,
+    .flag-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .flag-icon.gb {
+      background:
+        linear-gradient(90deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(0deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(90deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        linear-gradient(0deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        #012169;
+    }
+
+    .flag-icon.gb::before {
+      background:
+        linear-gradient(32deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%),
+        linear-gradient(-32deg, transparent 42%, #ffffff 42%, #ffffff 58%, transparent 58%);
+    }
+
+    .flag-icon.gb::after {
+      background:
+        linear-gradient(32deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%),
+        linear-gradient(-32deg, transparent 46%, #c8102e 46%, #c8102e 54%, transparent 54%);
+    }
+
+    .flag-icon.es {
+      background: linear-gradient(180deg, #aa151b 0 25%, #f1bf00 25% 75%, #aa151b 75% 100%);
+    }
+
+    .flag-icon.es::before {
+      inset: 9px auto auto 7px;
+      width: 5px;
+      height: 9px;
+      border-radius: 1px;
+      background: #8f1d1d;
+      box-shadow: 5px 0 0 #f6d04d;
+    }
+
+    .lang-code {
+      line-height: 1;
+    }
+
+    .lang-btn:hover,
+    .lang-btn:focus-visible {
+      color: #ffffff;
+      background: rgba(1, 8, 15, 0.78);
+      border-color: rgba(165,153,19,0.58);
+      outline: none;
     }
 
     section {
@@ -165,10 +252,14 @@ header > *:not(#hero-video):not(.hero-overlay) {
       margin: auto;
     }
 
+    section + section {
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
     .image-section {
       isolation: isolate;
       overflow: hidden;
-      border-radius: 16px;
+      border-radius: 8px;
       background-color: var(--black);
       background-position: center;
       background-size: cover;
@@ -201,7 +292,8 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
     .image-section .section-title,
     .image-section .services,
-    .image-section .impact-grid {
+    .image-section .impact-grid,
+    .image-section .section-actions {
       position: relative;
       z-index: 1;
     }
@@ -247,7 +339,9 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
     .services,
     .pillars,
-    .impact-grid {
+    .impact-grid,
+    .ods-grid,
+    .project-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 28px;
@@ -255,12 +349,15 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
     .service,
     .pillar,
-    .impact-card {
+    .impact-card,
+    .ods-card,
+    .project-card {
       background: var(--navy);
       color: var(--muted);
       padding: 32px;
-      border-radius: 14px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
     }
 
     .image-section .service,
@@ -273,10 +370,32 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
     .service h3,
     .pillar h3,
-    .impact-card h3 {
+    .impact-card h3,
+    .ods-card h3,
+    .project-card h3 {
       margin-bottom: 14px;
       color: #ffffff;
       font-size: 1.25rem;
+    }
+
+    .ods-card {
+      border: 1px solid rgba(165,153,19,0.35);
+      background: linear-gradient(180deg, rgba(16,42,68,0.96), rgba(1,8,15,0.94));
+    }
+
+    .ods-icon {
+      display: block;
+      width: 74px;
+      height: 74px;
+      margin-bottom: 20px;
+      border-radius: 7px;
+      object-fit: cover;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.24);
+    }
+
+    .section-actions {
+      margin-top: 34px;
+      text-align: center;
     }
 
     .image-section .service h3,
@@ -290,11 +409,20 @@ header > *:not(#hero-video):not(.hero-overlay) {
       text-shadow: 0 2px 10px rgba(0,0,0,0.55);
     }
 
+    .impact-number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
     .value {
       background: var(--navy-soft);
       color: var(--muted);
       padding: 50px 30px;
-      border-radius: 16px;
+      border-radius: 8px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.65);
     }
@@ -315,7 +443,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
       margin-top: 34px;
       padding: 30px;
       border: 1px solid rgba(244,196,48,0.45);
-      border-radius: 14px;
+      border-radius: 8px;
       color: var(--accent);
       font-size: clamp(1.25rem, 4vw, 1.7rem);
       font-weight: 800;
@@ -325,17 +453,30 @@ header > *:not(#hero-video):not(.hero-overlay) {
     .sectors {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
+      max-width: 1100px;
+      margin: 34px auto 0;
     }
 
     .sector {
-      background: var(--navy);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 20px;
-      font-size: 0.9rem;
+      background: rgba(165, 153, 19, 0.10);
+      color: var(--accent);
+      padding: 12px 18px;
+      border: 1px solid rgba(165,153,19,0.55);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
       white-space: nowrap;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .sector:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      color: #000000;
+      border-color: var(--accent);
     }
 
     .contact {
@@ -364,28 +505,66 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
     .whatsapp-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: max(18px, env(safe-area-inset-bottom));
+      right: max(18px, env(safe-area-inset-right));
       background: var(--whatsapp);
       color: #ffffff;
-      width: 56px;
-      height: 56px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
       text-decoration: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.45);
       z-index: 999;
+      border: 2px solid rgba(255,255,255,0.88);
+    }
+
+    .whatsapp-btn:hover,
+    .whatsapp-btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.5);
+    }
+
+    .chat-icon {
+      position: relative;
+      width: 27px;
+      height: 21px;
+      border-radius: 13px;
+      background: #ffffff;
+      display: block;
+    }
+
+    .chat-icon::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      bottom: -4px;
+      width: 9px;
+      height: 9px;
+      background: #ffffff;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
     }
 
     @media (max-width: 600px) {
   .lang-btn {
-    top: 12px;
-    right: 12px;
-    font-size: 0.75rem;
-    padding: 5px 8px;
+    min-width: 64px;
+    min-height: 38px;
+    font-size: 0.76rem;
+    gap: 6px;
+    padding: 7px 9px;
+  }
+
+  .flag-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .whatsapp-btn {
+    width: 52px;
+    height: 52px;
   }
 
   .image-section {
@@ -399,6 +578,18 @@ header > *:not(#hero-video):not(.hero-overlay) {
   .image-section .service,
   .image-section .impact-card {
     padding: 24px;
+  }
+
+  .sectors {
+    gap: 10px;
+  }
+
+  .sector {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 138px;
+    padding: 12px 14px;
+    text-align: center;
+    white-space: normal;
   }
 }
 
@@ -436,8 +627,14 @@ header > *:not(#hero-video):not(.hero-overlay) {
       }
 
       .pillars,
-      .impact-grid {
+      .impact-grid,
+      .ods-grid,
+      .project-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .ods-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
 
       section {
@@ -469,11 +666,20 @@ header > *:not(#hero-video):not(.hero-overlay) {
         min-height: 210px;
       }
     }
+
+    @media (min-width: 1000px) {
+      .ods-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
   </style>
 </head>
 
 <body>
-  <button id="langToggle" class="lang-btn" onclick="toggleLang()">🇬🇧 EN</button>
+  <button id="langToggle" class="lang-btn" onclick="toggleLang()" aria-label="Change language">
+    <span class="flag-icon gb" aria-hidden="true"></span>
+    <span class="lang-code">EN</span>
+  </button>
   
   <!-- HERO -->
   <header>
@@ -508,17 +714,25 @@ header > *:not(#hero-video):not(.hero-overlay) {
       Si existe, lo conseguimos. Si no existe, lo creamos.
     </div>
 
-    <a href="#contacto" class="cta"
-       data-es="Contáctanos"
-       data-en="Contact us">
-      Contáctanos
-    </a>
+    <div class="cta-row">
+      <a href="#contacto" class="cta"
+         data-es="Contáctanos"
+         data-en="Contact us">
+        Contáctanos
+      </a>
 
-    <a href="#servicios" class="cta secondary"
-       data-es="Servicios"
-       data-en="Services">
-      Servicios
-    </a>
+      <a href="#servicios" class="cta secondary"
+         data-es="Servicios"
+         data-en="Services">
+        Servicios
+      </a>
+
+      <a href="proyectos.html" class="cta secondary"
+         data-es="Proyectos"
+         data-en="Projects">
+        Proyectos
+      </a>
+    </div>
   </header>
 
   <!-- QUÉ ES ZOI -->
@@ -527,35 +741,35 @@ header > *:not(#hero-video):not(.hero-overlay) {
       <h2 data-es="Qué es ZOI" data-en="What is ZOI">
         Qué es ZOI
       </h2>
-      <p data-es="Una empresa social enfocada en desarrollo humano tecnológico."
-         data-en="A social enterprise focused on technological human development.">
-        Una empresa social enfocada en desarrollo humano tecnológico.
+      <p data-es="Tecnología aplicada para desarrollar capacidades, activar producción y abrir oportunidades reales."
+         data-en="Applied technology to develop capabilities, activate production, and create real opportunities.">
+        Tecnología aplicada para desarrollar capacidades, activar producción y abrir oportunidades reales.
       </p>
     </div>
 
     <p class="intro-text"
-       data-es="ZOI impulsa el desarrollo humano a través de la tecnología, reduciendo la brecha entre el avance tecnológico y la capacidad de las personas, empresas e instituciones para adaptarse, producir y crear valor."
-       data-en="ZOI drives human development through technology, reducing the gap between technological progress and the ability of people, companies, and institutions to adapt, produce, and create value.">
-      ZOI impulsa el desarrollo humano a través de la tecnología, reduciendo la brecha entre el avance tecnológico y la capacidad de las personas, empresas e instituciones para adaptarse, producir y crear valor.
+       data-es="ZOI acompaña a personas, empresas e instituciones en la adopción de tecnologías productivas: desde formación y prototipado hasta fabricación, automatización e integración operativa."
+       data-en="ZOI supports people, companies, and institutions in adopting productive technologies: from training and prototyping to fabrication, automation, and operational integration.">
+      ZOI acompaña a personas, empresas e instituciones en la adopción de tecnologías productivas: desde formación y prototipado hasta fabricación, automatización e integración operativa.
     </p>
 
     <p class="intro-text"
-       data-es="No solo desarrollamos tecnología: la convertimos en capacidades, la activamos en sistemas productivos y la transformamos en oportunidades económicas reales."
-       data-en="We don’t just develop technology: we turn it into capabilities, activate it in production systems, and transform it into real economic opportunities.">
-      No solo desarrollamos tecnología: la convertimos en capacidades, la activamos en sistemas productivos y la transformamos en oportunidades económicas reales.
+       data-es="La tecnología no se queda en discurso: se convierte en aprendizaje, procesos, productos y valor económico medible."
+       data-en="Technology does not remain a discourse: it becomes learning, processes, products, and measurable economic value.">
+      La tecnología no se queda en discurso: se convierte en aprendizaje, procesos, productos y valor económico medible.
     </p>
   </section>
 
   <!-- MODELO -->
   <section id="modelo">
     <div class="section-title">
-      <h2 data-es="Un modelo que conecta impacto con ejecución"
-          data-en="A model connecting impact with execution">
-        Un modelo que conecta impacto con ejecución
+      <h2 data-es="Un modelo claro: entender, formar y producir"
+          data-en="A clear model: understand, train, and produce">
+        Un modelo claro: entender, formar y producir
       </h2>
-      <p data-es="Tecnología, capacidades humanas y producción real trabajando como un solo sistema."
-         data-en="Technology, human capabilities, and real production working as one system.">
-        Tecnología, capacidades humanas y producción real trabajando como un solo sistema.
+      <p data-es="Cada proyecto conecta diagnóstico, desarrollo de capacidades y ejecución real."
+         data-en="Each project connects diagnosis, capability development, and real execution.">
+        Cada proyecto conecta diagnóstico, desarrollo de capacidades y ejecución real.
       </p>
     </div>
 
@@ -563,11 +777,11 @@ header > *:not(#hero-video):not(.hero-overlay) {
       <div class="pillar">
         <h3 data-es="Comprensión del cambio"
             data-en="Understanding change">
-          Comprensión del cambio
+          Entender el reto
         </h3>
-        <p data-es="Investigamos cómo la tecnología transforma el trabajo, identificando riesgos de desplazamiento laboral y nuevas oportunidades emergentes."
-           data-en="We study how technology transforms work, identifying labor displacement risks and emerging opportunities.">
-          Investigamos cómo la tecnología transforma el trabajo, identificando riesgos de desplazamiento laboral y nuevas oportunidades emergentes.
+        <p data-es="Analizamos necesidades, procesos y brechas para identificar dónde la tecnología puede generar valor real."
+           data-en="We analyze needs, processes, and gaps to identify where technology can create real value.">
+          Analizamos necesidades, procesos y brechas para identificar dónde la tecnología puede generar valor real.
         </p>
       </div>
 
@@ -576,9 +790,9 @@ header > *:not(#hero-video):not(.hero-overlay) {
             data-en="Capability development">
           Desarrollo de capacidades
         </h3>
-        <p data-es="Formamos personas y equipos en herramientas de fabricación digital, automatización y tecnologías productivas."
-           data-en="We train people and teams in digital fabrication, automation, and productive technologies.">
-          Formamos personas y equipos en herramientas de fabricación digital, automatización y tecnologías productivas.
+        <p data-es="Formamos personas y equipos para usar herramientas de fabricación digital, automatización y producción tecnológica."
+           data-en="We train people and teams to use digital fabrication, automation, and technological production tools.">
+          Formamos personas y equipos para usar herramientas de fabricación digital, automatización y producción tecnológica.
         </p>
       </div>
 
@@ -587,9 +801,9 @@ header > *:not(#hero-video):not(.hero-overlay) {
             data-en="Real production">
           Producción real
         </h3>
-        <p data-es="Conectamos capacidades con proyectos reales, generando valor económico, experiencia práctica e ingresos."
-           data-en="We connect capabilities with real projects, generating economic value, practical experience, and income.">
-          Conectamos capacidades con proyectos reales, generando valor económico, experiencia práctica e ingresos.
+        <p data-es="Convertimos ideas y capacidades en prototipos, soluciones, laboratorios, sistemas y entregables concretos."
+           data-en="We turn ideas and capabilities into prototypes, solutions, labs, systems, and concrete deliverables.">
+          Convertimos ideas y capacidades en prototipos, soluciones, laboratorios, sistemas y entregables concretos.
         </p>
       </div>
     </div>
@@ -638,65 +852,50 @@ header > *:not(#hero-video):not(.hero-overlay) {
         </p>
       </div>
     </div>
-  </section>
 
-  <!-- PROPUESTA DE VALOR -->
-  <section id="como-trabajamos">
-    <div class="value">
-      <h2 data-es="Cómo trabajamos" data-en="How we work">
-        Cómo trabajamos
-      </h2>
-
-      <p data-es="En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción, asegurando que la tecnología genere impacto real en las personas y en los sistemas productivos."
-         data-en="At ZOI we don’t just design ideas: we build them, test them, and bring them to production, ensuring technology creates real impact on people and production systems.">
-        En ZOI no solo diseñamos ideas: las construimos, las probamos y las llevamos a producción, asegurando que la tecnología genere impacto real en las personas y en los sistemas productivos.
-      </p>
-
-      <div class="quote-box"
-           data-es="Si existe, lo conseguimos. Si no existe, lo creamos."
-           data-en="If it exists, we source it. If it doesn’t, we create it.">
-        Si existe, lo conseguimos. Si no existe, lo creamos.
-      </div>
+    <div class="section-actions">
+      <a href="proyectos.html" class="cta"
+         data-es="Ver proyectos destacados"
+         data-en="View featured projects">
+        Ver proyectos destacados
+      </a>
     </div>
   </section>
 
   <!-- CAPACIDAD OPERATIVA -->
   <section id="capacidad">
     <div class="section-title">
-      <h2 data-es="Capacidad operativa real"
-          data-en="Real operational capacity">
-        Capacidad operativa real
+      <h2 data-es="Sectores que acompañamos"
+          data-en="Sectors we support">
+        Sectores que acompañamos
       </h2>
-      <p data-es="ZOI es una infraestructura activa de desarrollo, producción e integración tecnológica."
-         data-en="ZOI is an active infrastructure for development, production, and technological integration.">
-        ZOI no es solo discurso. Es una infraestructura activa de desarrollo, producción e integración tecnológica.
+      <p data-es="Trabajamos con distintos actores que necesitan pasar de la idea a la implementación."
+         data-en="We work with different actors who need to move from idea to implementation.">
+        Trabajamos con distintos actores que necesitan pasar de la idea a la implementación.
       </p>
     </div>
 
     <p class="intro-text"
-       data-es="Si una solución existe, la encontramos, la integramos y la entregamos. Si no existe, la diseñamos, desarrollamos y producimos."
-       data-en="If a solution exists, we find it, integrate it, and deliver it. If it doesn’t exist, we design it, develop it, and produce it.">
-      Si una solución existe, la encontramos, la integramos y la entregamos. Si no existe, la diseñamos, desarrollamos y producimos.
+       data-es="Integramos formación, diseño, fabricación y automatización para responder a necesidades institucionales, empresariales, educativas y productivas."
+       data-en="We integrate training, design, fabrication, and automation to respond to institutional, business, educational, and productive needs.">
+      Integramos formación, diseño, fabricación y automatización para responder a necesidades institucionales, empresariales, educativas y productivas.
     </p>
 
     <div class="sectors">
-      <div class="sector" data-es="Instituciones" data-en="Institutions">
-        Instituciones
+      <div class="sector" data-es="Público" data-en="Public sector">
+        Público
       </div>
-      <div class="sector" data-es="Empresas" data-en="Companies">
-        Empresas
-      </div>
-      <div class="sector" data-es="Emprendimientos" data-en="Startups">
-        Emprendimientos
+      <div class="sector" data-es="Privado" data-en="Private sector">
+        Privado
       </div>
       <div class="sector" data-es="Educación" data-en="Education">
         Educación
       </div>
-      <div class="sector" data-es="Fabricación personalizada" data-en="Custom fabrication">
-        Fabricación personalizada
+      <div class="sector" data-es="Organizaciones sociales" data-en="Social organizations">
+        Organizaciones sociales
       </div>
-      <div class="sector" data-es="Automatización productiva" data-en="Productive automation">
-        Automatización productiva
+      <div class="sector" data-es="Emprendedores" data-en="Entrepreneurs">
+        Emprendedores
       </div>
     </div>
   </section>
@@ -707,43 +906,171 @@ header > *:not(#hero-video):not(.hero-overlay) {
       <h2 data-es="Impacto" data-en="Impact">
         Impacto
       </h2>
-      <p data-es="Medimos lo que importa: capacidades, transición laboral y oportunidades reales."
-         data-en="We measure what matters: capabilities, workforce transition, and real opportunities.">
-        Medimos lo que importa: capacidades, transición laboral y oportunidades reales.
+      <p data-es="Tecnología aplicada que se traduce en proyectos ejecutados, aprendizaje y alcance social."
+         data-en="Applied technology translated into delivered projects, learning, and social reach.">
+        Tecnología aplicada que se traduce en proyectos ejecutados, aprendizaje y alcance social.
       </p>
     </div>
 
     <div class="impact-grid">
       <div class="impact-card">
-        <h3 data-es="Acceso a tecnología"
-            data-en="Access to technology">
-          Acceso a tecnología
+        <span class="impact-number">+830</span>
+        <h3 data-es="Proyectos ejecutados"
+            data-en="Projects delivered">
+          Proyectos ejecutados
         </h3>
-        <p data-es="Acercamos herramientas avanzadas de fabricación digital, automatización y diseño a personas, instituciones y comunidades."
-           data-en="We bring advanced tools for digital fabrication, automation, and design closer to people, institutions, and communities.">
-          Acercamos herramientas avanzadas de fabricación digital, automatización y diseño a personas, instituciones y comunidades.
+        <p data-es="Soluciones, programas y procesos implementados junto a aliados públicos, privados, educativos y sociales."
+           data-en="Solutions, programs, and processes implemented with public, private, educational, and social partners.">
+          Soluciones, programas y procesos implementados junto a aliados públicos, privados, educativos y sociales.
         </p>
       </div>
 
       <div class="impact-card">
-        <h3 data-es="Reconversión laboral"
-            data-en="Workforce transformation">
-          Reconversión laboral
+        <span class="impact-number">+3.500</span>
+        <h3 data-es="Estudiantes impactados"
+            data-en="Students impacted">
+          Estudiantes impactados
         </h3>
-        <p data-es="Impulsamos nuevas capacidades para que las personas puedan adaptarse a los cambios tecnológicos y participar en trabajos emergentes."
-           data-en="We promote new capabilities so people can adapt to technological change and participate in emerging work opportunities.">
-          Impulsamos nuevas capacidades para que las personas puedan adaptarse a los cambios tecnológicos y participar en trabajos emergentes.
+        <p data-es="Personas formadas mediante experiencias de aprendizaje, capacitación técnica y tecnología aplicada."
+           data-en="People trained through learning experiences, technical training, and applied technology.">
+          Personas formadas mediante experiencias de aprendizaje, capacitación técnica y tecnología aplicada.
         </p>
       </div>
 
       <div class="impact-card">
-        <h3 data-es="Oportunidades productivas"
-            data-en="Productive opportunities">
-          Oportunidades productivas
+        <span class="impact-number">+250.000</span>
+        <h3 data-es="Personas impactadas"
+            data-en="People impacted">
+          Personas impactadas
         </h3>
-        <p data-es="Conectamos formación, tecnología y producción para generar valor económico, experiencia práctica e ingresos reales."
-           data-en="We connect training, technology, and production to generate economic value, practical experience, and real income.">
-          Conectamos formación, tecnología y producción para generar valor económico, experiencia práctica e ingresos reales.
+        <p data-es="Alcance generado de manera directa e indirecta a través de proyectos, educación, producción y transferencia tecnológica."
+           data-en="Reach generated directly and indirectly through projects, education, production, and technology transfer.">
+          Alcance generado de manera directa e indirecta a través de proyectos, educación, producción y transferencia tecnológica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ODS -->
+  <section id="ods">
+    <div class="section-title">
+      <h2 data-es="ODS relacionados" data-en="Related SDGs">
+        ODS relacionados
+      </h2>
+      <p data-es="El trabajo de ZOI se alinea con objetivos globales que conectan educación, trabajo, innovación e inclusión."
+         data-en="ZOI’s work aligns with global goals connecting education, work, innovation, and inclusion.">
+        El trabajo de ZOI se alinea con objetivos globales que conectan educación, trabajo, innovación e inclusión.
+      </p>
+    </div>
+
+    <div class="ods-grid">
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-01.svg" alt="SDG 1" loading="lazy">
+        <h3 data-es="Fin de la pobreza" data-en="No poverty">
+          Fin de la pobreza
+        </h3>
+        <p data-es="Tecnología productiva como herramienta para abrir oportunidades económicas."
+           data-en="Productive technology as a tool to open economic opportunities.">
+          Tecnología productiva como herramienta para abrir oportunidades económicas.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-04.svg" alt="SDG 4" loading="lazy">
+        <h3 data-es="Educación de calidad" data-en="Quality education">
+          Educación de calidad
+        </h3>
+        <p data-es="Formación tecnológica aplicada para personas, equipos e instituciones."
+           data-en="Applied technology training for people, teams, and institutions.">
+          Formación tecnológica aplicada para personas, equipos e instituciones.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-05.svg" alt="SDG 5" loading="lazy">
+        <h3 data-es="Igualdad de género" data-en="Gender equality">
+          Igualdad de género
+        </h3>
+        <p data-es="Acceso inclusivo a formación, tecnología y participación productiva."
+           data-en="Inclusive access to training, technology, and productive participation.">
+          Acceso inclusivo a formación, tecnología y participación productiva.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-06.svg" alt="SDG 6" loading="lazy">
+        <h3 data-es="Agua limpia y saneamiento" data-en="Clean water and sanitation">
+          Agua limpia y saneamiento
+        </h3>
+        <p data-es="Soluciones tecnológicas aplicadas a infraestructura, operación y mejora de entornos."
+           data-en="Technological solutions applied to infrastructure, operation, and environmental improvement.">
+          Soluciones tecnológicas aplicadas a infraestructura, operación y mejora de entornos.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-08.svg" alt="SDG 8" loading="lazy">
+        <h3 data-es="Trabajo decente y crecimiento económico" data-en="Decent work and economic growth">
+          Trabajo decente y crecimiento económico
+        </h3>
+        <p data-es="Capacidades productivas que abren oportunidades laborales y económicas."
+           data-en="Productive capabilities that open labor and economic opportunities.">
+          Capacidades productivas que abren oportunidades laborales y económicas.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-09.svg" alt="SDG 9" loading="lazy">
+        <h3 data-es="Industria, innovación e infraestructura" data-en="Industry, innovation, and infrastructure">
+          Industria, innovación e infraestructura
+        </h3>
+        <p data-es="Fabricación digital, automatización e infraestructura tecnológica aplicada."
+           data-en="Digital fabrication, automation, and applied technological infrastructure.">
+          Fabricación digital, automatización e infraestructura tecnológica aplicada.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-10.svg" alt="SDG 10" loading="lazy">
+        <h3 data-es="Reducción de desigualdades" data-en="Reduced inequalities">
+          Reducción de desigualdades
+        </h3>
+        <p data-es="Acceso a tecnología y aprendizaje para reducir brechas de participación."
+           data-en="Access to technology and learning to reduce participation gaps.">
+          Acceso a tecnología y aprendizaje para reducir brechas de participación.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-11.svg" alt="SDG 11" loading="lazy">
+        <h3 data-es="Ciudades y comunidades sostenibles" data-en="Sustainable cities and communities">
+          Ciudades y comunidades sostenibles
+        </h3>
+        <p data-es="Capacidades locales para diseñar, fabricar y mantener soluciones útiles."
+           data-en="Local capabilities to design, fabricate, and maintain useful solutions.">
+          Capacidades locales para diseñar, fabricar y mantener soluciones útiles.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-12.svg" alt="SDG 12" loading="lazy">
+        <h3 data-es="Producción y consumo responsables" data-en="Responsible consumption and production">
+          Producción y consumo responsables
+        </h3>
+        <p data-es="Prototipado, fabricación e integración orientados a uso eficiente de recursos."
+           data-en="Prototyping, fabrication, and integration focused on efficient resource use.">
+          Prototipado, fabricación e integración orientados a uso eficiente de recursos.
+        </p>
+      </div>
+
+      <div class="ods-card">
+        <img class="ods-icon" src="imags/ods/ods-17.svg" alt="SDG 17" loading="lazy">
+        <h3 data-es="Alianzas para lograr los objetivos" data-en="Partnerships for the goals">
+          Alianzas para lograr los objetivos
+        </h3>
+        <p data-es="Trabajo colaborativo con instituciones, empresas, educación y comunidades."
+           data-en="Collaborative work with institutions, companies, education, and communities.">
+          Trabajo colaborativo con instituciones, empresas, educación y comunidades.
         </p>
       </div>
     </div>
@@ -767,6 +1094,12 @@ header > *:not(#hero-video):not(.hero-overlay) {
          data-en="We believe technological development only makes sense when it becomes human development.">
         Creemos que el desarrollo tecnológico solo tiene sentido si se traduce en desarrollo humano.
       </p>
+
+      <div class="quote-box"
+           data-es="Si existe, lo conseguimos. Si no existe, lo creamos."
+           data-en="If it exists, we source it. If it doesn’t, we create it.">
+        Si existe, lo conseguimos. Si no existe, lo creamos.
+      </div>
     </div>
   </section>
 
@@ -790,6 +1123,12 @@ header > *:not(#hero-video):not(.hero-overlay) {
     Agente 24/7
     </a>
 
+    <a href="proyectos.html" class="cta secondary"
+       data-es="Ver proyectos"
+       data-en="View projects">
+      Ver proyectos
+    </a>
+
     <br />
 
     <p>📧 <strong>info@zoi.ec</strong></p>
@@ -810,7 +1149,7 @@ header > *:not(#hero-video):not(.hero-overlay) {
      target="_blank"
      rel="noopener noreferrer"
      aria-label="WhatsApp ZOI">
-    💬
+    <span class="chat-icon" aria-hidden="true"></span>
   </a>
 
   <!-- JS IDIOMA -->
@@ -824,8 +1163,11 @@ header > *:not(#hero-video):not(.hero-overlay) {
         el.textContent = el.dataset[currentLang];
       });
 
-      document.getElementById("langToggle").textContent =
-        currentLang === "es" ? "🇬🇧 EN" : "🇪🇸 ES";
+      const flagIcon = document.querySelector("#langToggle .flag-icon");
+      flagIcon.className = currentLang === "es" ? "flag-icon gb" : "flag-icon es";
+
+      document.querySelector("#langToggle .lang-code").textContent =
+        currentLang === "es" ? "EN" : "ES";
 
       document.documentElement.lang = currentLang;
     }

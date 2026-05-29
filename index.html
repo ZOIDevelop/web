@@ -20,6 +20,7 @@
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="imags/z-favicon.png" />
   <link rel="apple-touch-icon" href="imags/z-favicon.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
    
@@ -481,6 +482,118 @@ header > *:not(#hero-video):not(.hero-overlay) {
       border-color: var(--accent);
     }
 
+    .locations-section {
+      max-width: 1180px;
+    }
+
+    .operations-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .operations-map {
+      min-height: 420px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(165,153,19,0.30);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.48);
+      background: var(--navy);
+    }
+
+    .operations-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .location-card {
+      display: block;
+      background: linear-gradient(180deg, rgba(16,42,68,0.96), rgba(1,8,15,0.94));
+      color: var(--muted);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.07);
+      text-decoration: none;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.36);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .location-card:hover,
+    .location-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(165,153,19,0.55);
+      outline: none;
+      background: linear-gradient(180deg, rgba(22,55,88,0.98), rgba(1,8,15,0.96));
+    }
+
+    .location-card h3 {
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .location-card p {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .location-link {
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: #071726;
+      color: #d4d4d4;
+      border: 1px solid rgba(165,153,19,0.30);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.42);
+    }
+
+    .leaflet-popup-content {
+      margin: 14px;
+      min-width: 170px;
+    }
+
+    .map-popup-title {
+      color: #ffffff;
+      display: block;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .map-popup-link {
+      color: var(--accent);
+      display: inline-block;
+      font-weight: 800;
+      margin-top: 8px;
+      text-decoration: none;
+    }
+
+    .zoi-marker {
+      display: block;
+      position: relative;
+      width: 28px;
+      height: 28px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--accent);
+      border: 3px solid #ffffff;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.46);
+      transform: rotate(-45deg);
+    }
+
+    .zoi-marker::after {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 50%;
+      background: #071726;
+    }
+
     .contact {
       text-align: center;
     }
@@ -593,6 +706,10 @@ header > *:not(#hero-video):not(.hero-overlay) {
     text-align: center;
     white-space: normal;
   }
+
+  .operations-map {
+    min-height: 360px;
+  }
 }
 
     @media (min-width: 700px) {
@@ -637,6 +754,10 @@ header > *:not(#hero-video):not(.hero-overlay) {
 
       .ods-grid {
         grid-template-columns: repeat(4, 1fr);
+      }
+
+      .operations-layout {
+        grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
       }
 
       section {
@@ -902,6 +1023,59 @@ header > *:not(#hero-video):not(.hero-overlay) {
     </div>
   </section>
 
+  <!-- UBICACIONES -->
+  <section id="ubicaciones" class="locations-section">
+    <div class="section-title">
+      <h2 data-es="Ubicaciones de operaci&oacute;n"
+          data-en="Operations locations">
+        Ubicaciones de operaci&oacute;n
+      </h2>
+      <p data-es="Nuestra red conecta talleres, laboratorios y sedes operativas para activar tecnolog&iacute;a aplicada en territorio."
+         data-en="Our network connects workshops, labs, and operating sites to activate applied technology on the ground.">
+        Nuestra red conecta talleres, laboratorios y sedes operativas para activar tecnolog&iacute;a aplicada en territorio.
+      </p>
+    </div>
+
+    <div class="operations-layout">
+      <div id="operationsMap" class="operations-map" aria-label="Mapa de ubicaciones ZOI"></div>
+
+      <div class="operations-list">
+        <a class="location-card" href="https://www.google.com/maps/place/FabLab+ZOI+WorkShop/@-0.1632394,-78.4788236,17z/data=!3m1!4b1!4m6!3m5!1s0x91d59a8c0b05b57f:0xe5b4f4c0ab957407!8m2!3d-0.1632394!4d-78.4788236!16s%2Fg%2F11ggnbb5ps?authuser=0&amp;hl=es-419&amp;entry=ttu&amp;g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h3>FabLab ZOI WorkShop</h3>
+          <p data-es="Laboratorio y taller principal de fabricaci&oacute;n digital."
+             data-en="Main digital fabrication lab and workshop.">
+            Laboratorio y taller principal de fabricaci&oacute;n digital.
+          </p>
+          <span class="location-link" data-es="Abrir en Google Maps" data-en="Open in Google Maps">
+            Abrir en Google Maps
+          </span>
+        </a>
+
+        <a class="location-card" href="https://www.google.com/maps/search/?api=1&amp;query=-0.2253611%2C-78.3425278" target="_blank" rel="noopener noreferrer">
+          <h3>ZOI Quito Valles</h3>
+          <p data-es="0&deg;13'31.3&quot;S 78&deg;20'33.1&quot;W"
+             data-en="0&deg;13'31.3&quot;S 78&deg;20'33.1&quot;W">
+            0&deg;13'31.3&quot;S 78&deg;20'33.1&quot;W
+          </p>
+          <span class="location-link" data-es="Abrir en Google Maps" data-en="Open in Google Maps">
+            Abrir en Google Maps
+          </span>
+        </a>
+
+        <a class="location-card" href="https://www.google.com/maps/search/?api=1&amp;query=Teodoro%20Gomez%20de%20La%20Torre%2C%20170148%20Quito" target="_blank" rel="noopener noreferrer">
+          <h3>ZOI Quito Sur</h3>
+          <p data-es="Teodoro Gomez de La Torre, 170148 Quito."
+             data-en="Teodoro Gomez de La Torre, 170148 Quito.">
+            Teodoro Gomez de La Torre, 170148 Quito.
+          </p>
+          <span class="location-link" data-es="Abrir en Google Maps" data-en="Open in Google Maps">
+            Abrir en Google Maps
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- IMPACTO -->
   <section id="impacto" class="image-section impact-section">
     <div class="section-title">
@@ -1091,8 +1265,87 @@ header > *:not(#hero-video):not(.hero-overlay) {
   </a>
 
   <!-- JS IDIOMA -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     let currentLang = "es";
+    let operationsMap;
+    const operationMarkers = [];
+
+    const operationLocations = [
+      {
+        name: "FabLab ZOI WorkShop",
+        lat: -0.1632394,
+        lng: -78.4788236,
+        es: "Laboratorio y taller principal de fabricaci&oacute;n digital.",
+        en: "Main digital fabrication lab and workshop.",
+        url: "https://www.google.com/maps/place/FabLab+ZOI+WorkShop/@-0.1632394,-78.4788236,17z/data=!3m1!4b1!4m6!3m5!1s0x91d59a8c0b05b57f:0xe5b4f4c0ab957407!8m2!3d-0.1632394!4d-78.4788236!16s%2Fg%2F11ggnbb5ps?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        name: "ZOI Quito Valles",
+        lat: -0.2253611,
+        lng: -78.3425278,
+        es: "0&deg;13'31.3&quot;S 78&deg;20'33.1&quot;W",
+        en: "0&deg;13'31.3&quot;S 78&deg;20'33.1&quot;W",
+        url: "https://www.google.com/maps/search/?api=1&query=-0.2253611%2C-78.3425278"
+      },
+      {
+        name: "ZOI Quito Sur",
+        lat: -0.26629,
+        lng: -78.52715,
+        es: "Teodoro Gomez de La Torre, 170148 Quito.",
+        en: "Teodoro Gomez de La Torre, 170148 Quito.",
+        url: "https://www.google.com/maps/search/?api=1&query=Teodoro%20Gomez%20de%20La%20Torre%2C%20170148%20Quito"
+      }
+    ];
+
+    function popupContent(location) {
+      const description = location[currentLang];
+      const linkText = currentLang === "es" ? "Abrir en Google Maps" : "Open in Google Maps";
+      return `
+        <span class="map-popup-title">${location.name}</span>
+        <span>${description}</span>
+        <a class="map-popup-link" href="${location.url}" target="_blank" rel="noopener noreferrer">${linkText}</a>
+      `;
+    }
+
+    function initOperationsMap() {
+      const mapElement = document.getElementById("operationsMap");
+      if (!mapElement || typeof L === "undefined") return;
+
+      operationsMap = L.map(mapElement, {
+        scrollWheelZoom: false,
+        zoomControl: true
+      });
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(operationsMap);
+
+      const icon = L.divIcon({
+        className: "",
+        html: '<span class="zoi-marker"></span>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+      });
+
+      operationLocations.forEach(location => {
+        const marker = L.marker([location.lat, location.lng], { icon })
+          .addTo(operationsMap)
+          .bindPopup(popupContent(location));
+        operationMarkers.push({ marker, location });
+      });
+
+      const bounds = L.latLngBounds(operationLocations.map(location => [location.lat, location.lng]));
+      operationsMap.fitBounds(bounds, { padding: [42, 42], maxZoom: 12 });
+    }
+
+    function refreshMapLanguage() {
+      operationMarkers.forEach(({ marker, location }) => {
+        marker.setPopupContent(popupContent(location));
+      });
+    }
 
     function toggleLang() {
       currentLang = currentLang === "es" ? "en" : "es";
@@ -1108,7 +1361,10 @@ header > *:not(#hero-video):not(.hero-overlay) {
         currentLang === "es" ? "EN" : "ES";
 
       document.documentElement.lang = currentLang;
+      refreshMapLanguage();
     }
+
+    window.addEventListener("load", initOperationsMap);
   </script>
 
 </body>

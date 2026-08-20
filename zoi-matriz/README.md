@@ -2,6 +2,32 @@
 
 Mini app HTML para capturar tareas, ubicarlas en la matriz de energia/valor y registrar completadas.
 
+## Estructura
+
+```text
+zoi-matriz/
+  index.html
+  README.md
+  assets/
+    app.js
+    styles.css
+  n8n/
+    zoi-matriz-completadas.workflow.json
+    payload-example.json
+  docs/
+    n8n-webhook.md
+  integrations/
+    google-sheets-webhook.gs
+```
+
+## Que hay en cada carpeta
+
+- `index.html`: entrada publica de la app.
+- `assets/`: codigo y estilos de la app web.
+- `n8n/`: workflow importable y ejemplo de payload.
+- `docs/`: instrucciones de configuracion.
+- `integrations/`: piezas auxiliares si se usa otro puente, como Apps Script.
+
 ## Uso
 
 1. Abre `index.html` en el navegador.
@@ -50,7 +76,13 @@ Encabezados:
 4. Copia la Production URL del Webhook.
 5. En ZOI Matriz, abre configuracion y pega la URL.
 
-Ver guia detallada en `n8n-webhook-zoi-matriz.md`.
+Archivo importable:
+
+`n8n/zoi-matriz-completadas.workflow.json`
+
+Guia detallada:
+
+`docs/n8n-webhook.md`
 
 ## Siguiente fase
 

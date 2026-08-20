@@ -85,6 +85,11 @@ Respuesta:
 4. Guarda.
 5. Completa una tarea de prueba.
 
+## Archivos utiles
+
+- Workflow importable: `../n8n/zoi-matriz-completadas.workflow.json`
+- Payload de prueba: `../n8n/payload-example.json`
+
 ## Fase siguiente
 
 Cuando esto funcione, n8n puede hacer mas cosas:

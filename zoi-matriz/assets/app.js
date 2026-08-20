@@ -1,6 +1,7 @@
 const STORAGE_KEY = "zoi-matriz.tasks.v1";
 const LOG_KEY = "zoi-matriz.completed.v1";
 const ACCESS_KEY = "zoi-matriz.access.v1";
+const SEED_KEY = "zoi-matriz.seed.zoi-tasks.v1";
 const ACCESS_HASH = "aedfe4ef5b9cacc89e9f7ada947a94a5d7050e060b24a2d21e07a19a0930a826";
 const WEBHOOK_URL = "https://zoidevelop.app.n8n.cloud/webhook/zoi-matriz/completadas";
 
@@ -15,6 +16,21 @@ const state = {
   tasks: readJson(STORAGE_KEY, []),
   completed: readJson(LOG_KEY, []),
 };
+
+const seedTasks = [
+  { text: "Fresado Martin", energy: "baja", value: "alto" },
+  { text: "Madebu portarelojes", energy: "alta", value: "alto" },
+  { text: "Madebu logos", energy: "alta", value: "alto" },
+  { text: "Madebu Banca", energy: "alta", value: "alto" },
+  { text: "Retirar fresadora y brazo", energy: "baja", value: "alto" },
+  { text: "Capacitacion Presencial", energy: "alta", value: "alto" },
+  { text: "Revisar y empacar Quitopia", energy: "baja", value: "alto" },
+  { text: "Moldes maderas Madebu", energy: "alta", value: "alto" },
+  { text: "Documentos para pago", energy: "baja", value: "alto" },
+  { text: "Link presentacion", energy: "baja", value: "bajo" },
+  { text: "Documento de entrega de maquinaria", energy: "baja", value: "alto" },
+  { text: "Formato acta entrega recepcion total", energy: "baja", value: "alto" },
+];
 
 const form = document.querySelector("#taskForm");
 const template = document.querySelector("#taskTemplate");
@@ -178,7 +194,21 @@ async function sha256(value) {
 function unlockApp() {
   accessScreen.classList.add("access-granted");
   appShell.classList.remove("app-locked");
+  seedInitialTasks();
   render();
+}
+
+function seedInitialTasks() {
+  if (localStorage.getItem(SEED_KEY) === "true" || state.tasks.length > 0) return;
+
+  state.tasks = seedTasks.map((task) => ({
+    id: crypto.randomUUID(),
+    ...task,
+    quadrant: quadrants[`${task.energy}:${task.value}`],
+    createdAt: new Date().toISOString(),
+  }));
+  localStorage.setItem(SEED_KEY, "true");
+  persist();
 }
 
 if (sessionStorage.getItem(ACCESS_KEY) === "true") {

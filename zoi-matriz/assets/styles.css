@@ -191,11 +191,21 @@ label {
   padding: 0;
 }
 
+.matrix-wrap {
+  display: grid;
+  gap: 10px 14px;
+  grid-template-columns: 42px 1fr 1fr;
+  grid-template-rows: auto auto 1fr 1fr;
+  margin-top: 18px;
+}
+
 .matrix {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 18px;
+  grid-column: 2 / 4;
+  grid-row: 3 / 5;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(320px, auto));
 }
 
 .lane {
@@ -203,6 +213,82 @@ label {
   border-radius: 8px;
   min-height: 420px;
   overflow: hidden;
+}
+
+.lane[data-quadrant="Produccion"] {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.lane[data-quadrant="Distraccion"] {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.lane[data-quadrant="Reemplazo"] {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.lane[data-quadrant="Delegacion"] {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.axis,
+.axis-label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.axis-value {
+  grid-column: 2 / 4;
+  grid-row: 1;
+  text-align: center;
+}
+
+.axis-energy {
+  align-self: center;
+  grid-column: 1;
+  grid-row: 3 / 5;
+  justify-self: center;
+  transform: rotate(-90deg);
+}
+
+.high-value,
+.low-value {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+.high-value {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.low-value {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.high-energy,
+.low-energy {
+  align-self: center;
+  grid-column: 1;
+  justify-self: end;
+  writing-mode: vertical-rl;
+}
+
+.high-energy {
+  grid-row: 3;
+}
+
+.low-energy {
+  grid-row: 4;
 }
 
 .lane header {
@@ -301,8 +387,21 @@ label {
 
   .capture-controls,
   .settings,
+  .matrix-wrap,
   .matrix {
     grid-template-columns: 1fr;
+  }
+
+  .matrix-wrap,
+  .matrix,
+  .lane[data-quadrant] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .axis,
+  .axis-label {
+    display: none;
   }
 
   .topbar {

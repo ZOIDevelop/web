@@ -2,7 +2,7 @@ const STORAGE_KEY = "zoi-matriz.tasks.v1";
 const LOG_KEY = "zoi-matriz.completed.v1";
 const SETTINGS_KEY = "zoi-matriz.settings.v1";
 const ACCESS_KEY = "zoi-matriz.access.v1";
-const ACCESS_HASH = "d25d022fe5864fc215fd21ead16e2de2f0bb459dd2374c25c1a604e4392c75c3";
+const ACCESS_HASH = "aedfe4ef5b9cacc89e9f7ada947a94a5d7050e060b24a2d21e07a19a0930a826";
 
 const quadrants = {
   "alta:alto": "Produccion",

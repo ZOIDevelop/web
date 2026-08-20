@@ -1,4 +1,4 @@
-# Matiz App
+# ZOI Matriz App
 
 Mini app HTML para capturar tareas, ubicarlas en la matriz de energia/valor y registrar completadas.
 
@@ -12,9 +12,9 @@ Mini app HTML para capturar tareas, ubicarlas en la matriz de energia/valor y re
 
 ## Registro con n8n
 
-Matiz envia cada tarea completada a un Webhook de n8n. n8n se encarga de guardarla en Google Sheets.
+ZOI Matriz envia cada tarea completada a un Webhook de n8n. n8n se encarga de guardarla en Google Sheets.
 
-### Payload enviado por Matiz
+### Payload enviado por ZOI Matriz
 
 ```json
 {
@@ -44,13 +44,13 @@ Encabezados:
 
 ### Flujo n8n
 
-1. Webhook `POST /matiz/completadas`.
+1. Webhook `POST /zoi-matriz/completadas`.
 2. Google Sheets `Append Row`.
 3. Respond to Webhook con `{ "ok": true }`.
 4. Copia la Production URL del Webhook.
-5. En Matiz, abre configuracion y pega la URL.
+5. En ZOI Matriz, abre configuracion y pega la URL.
 
-Ver guia detallada en `n8n-webhook-matiz.md`.
+Ver guia detallada en `n8n-webhook-zoi-matriz.md`.
 
 ## Siguiente fase
 

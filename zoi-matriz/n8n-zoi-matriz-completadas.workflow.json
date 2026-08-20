@@ -1,22 +1,22 @@
 {
-  "name": "Matiz - Registrar completadas",
+  "name": "ZOI Matriz - Registrar completadas",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "matiz/completadas",
+        "path": "zoi-matriz/completadas",
         "responseMode": "responseNode",
         "options": {}
       },
       "id": "0f3b0d93-7c5b-4f81-bb56-6c69242eaf01",
-      "name": "Webhook Matiz",
+      "name": "Webhook ZOI Matriz",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
         260,
         300
       ],
-      "webhookId": "matiz-completadas"
+      "webhookId": "zoi-matriz-completadas"
     },
     {
       "parameters": {
@@ -130,7 +130,7 @@
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "{\n  \"ok\": true,\n  \"source\": \"matiz\"\n}",
+        "responseBody": "{\n  \"ok\": true,\n  \"source\": \"zoi-matriz\"\n}",
         "options": {}
       },
       "id": "5d80df22-584f-4ea4-9ef4-98e2a4bb8ce1",
@@ -145,7 +145,7 @@
   ],
   "pinData": {},
   "connections": {
-    "Webhook Matiz": {
+    "Webhook ZOI Matriz": {
       "main": [
         [
           {
@@ -176,6 +176,6 @@
   "meta": {
     "templateCredsSetupCompleted": false
   },
-  "id": "matiz-completadas",
+  "id": "zoi-matriz-completadas",
   "tags": []
 }

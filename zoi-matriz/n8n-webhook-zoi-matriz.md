@@ -1,13 +1,13 @@
-# n8n: Matiz completadas
+# n8n: ZOI Matriz completadas
 
 ## Objetivo
 
-Recibir desde Matiz cada tarea marcada como completada y guardarla en Google Sheets.
+Recibir desde ZOI Matriz cada tarea marcada como completada y guardarla en Google Sheets.
 
 ## Arquitectura
 
 ```text
-Matiz /matiz
+ZOI Matriz /zoi-matriz
   -> n8n Webhook
   -> Google Sheets Append Row
   -> Respond to Webhook
@@ -17,7 +17,7 @@ Matiz /matiz
 
 Nombre sugerido:
 
-`Matiz Tracking`
+`ZOI Matriz Tracking`
 
 Pestana:
 
@@ -36,7 +36,7 @@ id | text | quadrant | energy | value | createdAt | completedAt
 Configuracion:
 
 - HTTP Method: `POST`
-- Path: `matiz/completadas`
+- Path: `zoi-matriz/completadas`
 - Response: usar nodo `Respond to Webhook`
 
 La URL de prueba sirve mientras editas el workflow. La URL definitiva es la `Production URL`, y solo funciona cuando el workflow esta activo.
@@ -49,7 +49,7 @@ Operacion:
 
 Documento:
 
-- `Matiz Tracking`
+- `ZOI Matriz Tracking`
 
 Sheet:
 
@@ -77,9 +77,9 @@ Respuesta:
 }
 ```
 
-## Configuracion en Matiz
+## Configuracion en ZOI Matriz
 
-1. Abre `/matiz/`.
+1. Abre `/zoi-matriz/`.
 2. Presiona el boton de configuracion.
 3. Pega la `Production URL` del Webhook de n8n.
 4. Guarda.

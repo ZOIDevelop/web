@@ -1,6 +1,6 @@
-const STORAGE_KEY = "matiz.tasks.v1";
-const LOG_KEY = "matiz.completed.v1";
-const SETTINGS_KEY = "matiz.settings.v1";
+const STORAGE_KEY = "zoi-matriz.tasks.v1";
+const LOG_KEY = "zoi-matriz.completed.v1";
+const SETTINGS_KEY = "zoi-matriz.settings.v1";
 
 const quadrants = {
   "alta:alto": "Produccion",
@@ -77,7 +77,7 @@ downloadLog.addEventListener("click", () => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `matiz-completadas-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.download = `zoi-matriz-completadas-${new Date().toISOString().slice(0, 10)}.csv`;
   link.click();
   URL.revokeObjectURL(url);
 });

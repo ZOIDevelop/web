@@ -1,8 +1,8 @@
 const STORAGE_KEY = "zoi-matriz.tasks.v1";
 const LOG_KEY = "zoi-matriz.completed.v1";
-const SETTINGS_KEY = "zoi-matriz.settings.v1";
 const ACCESS_KEY = "zoi-matriz.access.v1";
 const ACCESS_HASH = "aedfe4ef5b9cacc89e9f7ada947a94a5d7050e060b24a2d21e07a19a0930a826";
+const WEBHOOK_URL = "https://zoidevelop.app.n8n.cloud/webhook/zoi-matriz/completadas";
 
 const quadrants = {
   "alta:alto": "Produccion",
@@ -14,15 +14,10 @@ const quadrants = {
 const state = {
   tasks: readJson(STORAGE_KEY, []),
   completed: readJson(LOG_KEY, []),
-  settings: readJson(SETTINGS_KEY, { webhookUrl: "" }),
 };
 
 const form = document.querySelector("#taskForm");
 const template = document.querySelector("#taskTemplate");
-const settingsButton = document.querySelector("#settingsButton");
-const settingsPanel = document.querySelector("#settingsPanel");
-const webhookUrl = document.querySelector("#webhookUrl");
-const saveSettings = document.querySelector("#saveSettings");
 const downloadLog = document.querySelector("#downloadLog");
 const completedCount = document.querySelector("#completedCount");
 const accessScreen = document.querySelector("#accessScreen");
@@ -30,8 +25,6 @@ const accessForm = document.querySelector("#accessForm");
 const accessKey = document.querySelector("#accessKey");
 const accessError = document.querySelector("#accessError");
 const appShell = document.querySelector("#appShell");
-
-webhookUrl.value = state.settings.webhookUrl || "";
 
 accessForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -68,16 +61,6 @@ form.addEventListener("submit", (event) => {
   persist();
   form.reset();
   render();
-});
-
-settingsButton.addEventListener("click", () => {
-  settingsPanel.classList.toggle("hidden");
-});
-
-saveSettings.addEventListener("click", () => {
-  state.settings.webhookUrl = webhookUrl.value.trim();
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(state.settings));
-  settingsPanel.classList.add("hidden");
 });
 
 downloadLog.addEventListener("click", () => {
@@ -147,21 +130,19 @@ async function completeTask(id) {
   persist();
   render();
 
-  if (state.settings.webhookUrl) {
-    try {
-      await fetch(state.settings.webhookUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(completed),
-      });
-    } catch {
-      state.tasks.unshift(task);
-      state.completed = state.completed.filter((item) => item.id !== id);
-      persist();
-      render();
-      alert("No se pudo registrar la tarea. Revisa la URL webhook de n8n.");
-    }
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(completed),
+    });
+  } catch {
+    state.tasks.unshift(task);
+    state.completed = state.completed.filter((item) => item.id !== id);
+    persist();
+    render();
+    alert("No se pudo registrar la tarea. Revisa el webhook de n8n.");
   }
 }
 

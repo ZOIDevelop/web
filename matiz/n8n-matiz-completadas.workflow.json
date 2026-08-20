@@ -1,0 +1,181 @@
+{
+  "name": "Matiz - Registrar completadas",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "matiz/completadas",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0f3b0d93-7c5b-4f81-bb56-6c69242eaf01",
+      "name": "Webhook Matiz",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "matiz-completadas"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "Selecciona tu Google Sheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Completadas",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.body.id }}",
+            "text": "={{ $json.body.text }}",
+            "quadrant": "={{ $json.body.quadrant }}",
+            "energy": "={{ $json.body.energy }}",
+            "value": "={{ $json.body.value }}",
+            "createdAt": "={{ $json.body.createdAt }}",
+            "completedAt": "={{ $json.body.completedAt }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "text",
+              "displayName": "text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "quadrant",
+              "displayName": "quadrant",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "energy",
+              "displayName": "energy",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "value",
+              "displayName": "value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "completedAt",
+              "displayName": "completedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9f1d7b6a-6a1c-4f96-a7e3-7676b3701065",
+      "name": "Guardar en Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        520,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"ok\": true,\n  \"source\": \"matiz\"\n}",
+        "options": {}
+      },
+      "id": "5d80df22-584f-4ea4-9ef4-98e2a4bb8ce1",
+      "name": "Responder OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        780,
+        300
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Matiz": {
+      "main": [
+        [
+          {
+            "node": "Guardar en Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Responder OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c2f3d99f-bc91-4c53-9919-fb2c7d1cdb7b",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "id": "matiz-completadas",
+  "tags": []
+}

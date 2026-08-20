@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Matiz</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Matiz</p>
+          <h1>Bandeja de tareas</h1>
+        </div>
+        <button class="icon-button" id="settingsButton" type="button" title="Configurar n8n">
+          <span aria-hidden="true">⚙</span>
+          <span class="sr-only">Configurar registro</span>
+        </button>
+      </header>
+
+      <section class="capture" aria-label="Nueva tarea">
+        <form id="taskForm">
+          <textarea id="taskText" name="taskText" rows="4" placeholder="Escribe una tarea, idea o pendiente..." required></textarea>
+          <div class="capture-controls">
+            <label>
+              Energia
+              <select id="energy" name="energy">
+                <option value="alta">Alta</option>
+                <option value="baja">Baja</option>
+              </select>
+            </label>
+            <label>
+              Valor
+              <select id="value" name="value">
+                <option value="alto">Alto</option>
+                <option value="bajo">Bajo</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Agregar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="settings hidden" id="settingsPanel" aria-label="Configuracion n8n">
+        <label>
+          URL webhook n8n
+          <input id="webhookUrl" type="url" placeholder="https://..." />
+        </label>
+        <button class="secondary" id="saveSettings" type="button">Guardar</button>
+      </section>
+
+      <section class="matrix" aria-label="Matriz de tareas">
+        <article class="lane" data-quadrant="Produccion">
+          <header>
+            <h2>Produccion</h2>
+            <p>Alta energia, alto valor</p>
+          </header>
+          <div class="cards" id="Produccion"></div>
+        </article>
+
+        <article class="lane" data-quadrant="Distraccion">
+          <header>
+            <h2>Distraccion</h2>
+            <p>Alta energia, bajo valor</p>
+          </header>
+          <div class="cards" id="Distraccion"></div>
+        </article>
+
+        <article class="lane" data-quadrant="Reemplazo">
+          <header>
+            <h2>Reemplazo</h2>
+            <p>Baja energia, alto valor</p>
+          </header>
+          <div class="cards" id="Reemplazo"></div>
+        </article>
+
+        <article class="lane" data-quadrant="Delegacion">
+          <header>
+            <h2>Delegacion</h2>
+            <p>Baja energia, bajo valor</p>
+          </header>
+          <div class="cards" id="Delegacion"></div>
+        </article>
+      </section>
+
+      <section class="activity" aria-label="Registro reciente">
+        <div>
+          <h2>Completadas</h2>
+          <p id="completedCount">0 registradas</p>
+        </div>
+        <button class="secondary" id="downloadLog" type="button">Descargar CSV</button>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <article class="task-card">
+        <p class="task-copy"></p>
+        <div class="task-meta"></div>
+        <div class="task-actions">
+          <button class="secondary move-button" type="button">Mover</button>
+          <button class="primary done-button" type="button">Completar</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

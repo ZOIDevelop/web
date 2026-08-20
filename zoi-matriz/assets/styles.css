@@ -32,6 +32,46 @@ textarea {
   font: inherit;
 }
 
+.access-screen {
+  align-items: center;
+  background: var(--paper);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: fixed;
+  z-index: 10;
+}
+
+.access-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  width: min(100%, 380px);
+}
+
+.access-card h1 {
+  font-size: 34px;
+}
+
+.access-error {
+  color: #a33a3a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.access-granted {
+  display: none;
+}
+
+.app-locked {
+  visibility: hidden;
+}
+
 .shell {
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;

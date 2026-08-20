@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <main class="shell">
+    <section class="access-screen" id="accessScreen" aria-label="Acceso">
+      <form class="access-card" id="accessForm">
+        <p class="eyebrow">ZOI Matriz</p>
+        <h1>Acceso</h1>
+        <label>
+          Clave
+          <input id="accessKey" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="primary" type="submit">Entrar</button>
+        <p class="access-error hidden" id="accessError">Clave incorrecta.</p>
+      </form>
+    </section>
+
+    <main class="shell app-locked" id="appShell">
       <header class="topbar">
         <div>
           <p class="eyebrow">ZOI Matriz</p>

@@ -1,6 +1,8 @@
 const STORAGE_KEY = "zoi-matriz.tasks.v1";
 const LOG_KEY = "zoi-matriz.completed.v1";
 const SETTINGS_KEY = "zoi-matriz.settings.v1";
+const ACCESS_KEY = "zoi-matriz.access.v1";
+const ACCESS_HASH = "d25d022fe5864fc215fd21ead16e2de2f0bb459dd2374c25c1a604e4392c75c3";
 
 const quadrants = {
   "alta:alto": "Produccion",
@@ -23,8 +25,27 @@ const webhookUrl = document.querySelector("#webhookUrl");
 const saveSettings = document.querySelector("#saveSettings");
 const downloadLog = document.querySelector("#downloadLog");
 const completedCount = document.querySelector("#completedCount");
+const accessScreen = document.querySelector("#accessScreen");
+const accessForm = document.querySelector("#accessForm");
+const accessKey = document.querySelector("#accessKey");
+const accessError = document.querySelector("#accessError");
+const appShell = document.querySelector("#appShell");
 
 webhookUrl.value = state.settings.webhookUrl || "";
+
+accessForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const hash = await sha256(accessKey.value);
+
+  if (hash !== ACCESS_HASH) {
+    accessError.classList.remove("hidden");
+    accessKey.select();
+    return;
+  }
+
+  sessionStorage.setItem(ACCESS_KEY, "true");
+  unlockApp();
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -165,4 +186,22 @@ function csvCell(value) {
   return `"${String(value ?? "").replaceAll('"', '""')}"`;
 }
 
-render();
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(hashBuffer)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function unlockApp() {
+  accessScreen.classList.add("access-granted");
+  appShell.classList.remove("app-locked");
+  render();
+}
+
+if (sessionStorage.getItem(ACCESS_KEY) === "true") {
+  unlockApp();
+} else {
+  accessKey.focus();
+}
